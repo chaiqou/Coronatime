@@ -10,11 +10,15 @@
                 {{-- FORM --}}
                 <div class="mt-6">
                     <div class="mt-9">
-                        <form action="#" method="POST" class="space-y-10">
-                            <x-form.input name='email' type='text' placeholder='username'>Username</x-form.input>
+                        <form action="/register" method="POST" class="space-y-10">
+                            @csrf
+
+                            <x-form.input name='username' type='text' placeholder='username'>Username</x-form.input>
                             <x-form.input name='email' type='email' placeholder='email'>Email</x-form.input>
-                            <x-form.input name='email' type='password' placeholder='password'>Password</x-form.input>
-                            <x-form.input name='email' type='password' placeholder='repeat password'>Repeat password
+                            <x-form.input name='password' type='password' placeholder='password'>Password</x-form.input>
+                            <x-form.input name='password_confirmation' type='password' placeholder='repeat password'>
+                                Repeat
+                                password
                             </x-form.input>
 
                             <x-form.rememberme />
