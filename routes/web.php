@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Show register form/create Form
-
-Route::get('/register', [UserController::class, 'create'])->name('user.register');
+Route::get('/register', [UserController::class, 'create'])->middleware('guest')->name('user.register');
 
 // Create New User
-Route::post('/register', [UserController::class, 'store'])->name('user.create');
+Route::post('/register', [UserController::class, 'store'])->middleware('guest')->name('user.create');
 
-Route::get('/', function () {
-	return view('login.main');
-});
+// Submit Logged user form
+Route::post('/login', [SessionController::class, 'store'])->name('user.store');
+
+// Log In user
+Route::get('/login', [SessionController::class, 'create'])->middleware('guest')->name('user.login');

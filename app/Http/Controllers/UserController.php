@@ -24,7 +24,8 @@ class UserController extends Controller
 			'password' => 'required|confirmed|min:3',
 		]);
 
-		// create user if validated
+		// create user if validated password hashed using mutator in User model
+
 		User::create($attributes);
 	}
 }
