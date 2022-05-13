@@ -12,7 +12,8 @@
                     <div class="mt-9">
                         <form action="/login" method="POST" class="space-y-10">
                             @csrf
-                            <x-form.input name='username' type='text' placeholder='username'>Username</x-form.input>
+                            <x-form.input name='username' type='text' placeholder='username'>Username
+                            </x-form.input>
                             <x-form.input name='password' type='password' placeholder='password'>Password</x-form.input>
 
 

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Notifications\VerifyEmailNotification;
-use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,24 +15,28 @@ class UserController extends Controller
 		return view('register.main');
 	}
 
-	// create new user and authenticate it
-
-	public function store()
+	public function register(Request $request)
 	{
-		$attributes = request()->validate([
-			'username'           => ['required', 'min:3', Rule::unique('users', 'username')],
-			'email'              => ['required', 'email', Rule::unique('users', 'email')],
-			'password'           => 'required|confirmed|min:3',
-		]);
+		// create new user
 
-		// create user if validated password hashed using mutator in User model
+		$user = new User();
+		$user->username = $request->username;
+		$user->email = $request->email;
+		$user->password = Hash::make($request->password);
+		$user->verification_code = sha1(time());
+		$user->save();
 
-		$user = User::create($attributes);
+		if ($user != null)
+		{
+			// if user created and !== null , then send email
 
-		// send confirmation email to user
-		$user->notify(new VerifyEmailNotification());
+			MailController::sendSignupEmail($user->username, $user->email, $user->verification_code);
 
-		// redirect to confirmation message page
-		return redirect('/email-confirmation');
+			// after send email redirect to email confirmation page
+			return redirect('/mail-confirmation');
+		}
+
+		// if user doesn't created redirect back with error message
+		return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
 	}
 }

@@ -20,7 +20,7 @@ use App\Http\Controllers\SessionController;
 	Route::get('/register', [UserController::class, 'create'])->name('user.register');
 
 	// Create New User
-	Route::post('/register', [UserController::class, 'store'])->name('user.create');
+	Route::post('/register', [UserController::class, 'register'])->name('user.create');
 
 	// Submit Logged user form
 	Route::post('/login', [SessionController::class, 'store'])->name('user.store');
@@ -29,4 +29,4 @@ use App\Http\Controllers\SessionController;
 	Route::get('/', [SessionController::class, 'create'])->name('user.login');
 
 	// Email confirmation page after submit new user
-	Route::get('/email-confirmation', [MailController::class, 'create'])->name('email.confirm');
+	Route::get('/mail-confirmation', [MailController::class, 'create'])->name('email.confirm');

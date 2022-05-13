@@ -4,6 +4,16 @@
         <div class="flex-1 flex flex-col justify-center px-4 sm:px-6 lg:px-20 xl:px-28">
             <div class="mx-18 w-full h-full mt-8 max-w-lg lg:w-96">
 
+                {{-- FLASH MESSAGE --}}
+                <div class="flash-message">
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                        @if (Session::has('alert-' . $msg))
+                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#"
+                                    class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                        @endif
+                    @endforeach
+                </div>
+
                 {{-- ლოგო და ველქამის კონტეინერი --}}
                 <x-form.header welcome='Welcome to the Coronatime' please='Please enter required info to sign up' />
 
