@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SignupEmail;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
 
 class MailController extends Controller
 {
@@ -23,5 +25,22 @@ class MailController extends Controller
 		];
 
 		Mail::to($email)->send(new SignupEmail($data));
+	}
+
+	// verify email
+	public function verify()
+	{
+		$verification_code = Request::get('code');
+		$user = User::where(['verification_code' => $verification_code])->get();
+
+		// if user !== 0 then mark as verified user in database
+		if ($user != null)
+		{
+			$user->is_verified = 1;
+			$user->save();
+			return redirect('email.confirmation');
+		}
+
+		return redirect()->route('/');
 	}
 }

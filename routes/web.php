@@ -30,3 +30,6 @@ use App\Http\Controllers\SessionController;
 
 	// Email confirmation page after submit new user
 	Route::get('/mail-confirmation', [MailController::class, 'create'])->name('email.confirm');
+
+	// Email verify page after click on email button
+	Route::get('/mail-verify', [MailController::class, 'verify'])->name('email.verify');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
@@ -32,5 +33,12 @@ class SessionController extends Controller
 		throw ValidationException::withMessages([
 			'password' => 'Your provided credentials could not be verified',
 		]);
+	}
+
+	// if user doesnot verified then dont allow login
+
+	public function credentials(Request $request)
+	{
+		return array_merge($request->only($this->username, 'password'), ['is_verified' => 1]);
 	}
 }
