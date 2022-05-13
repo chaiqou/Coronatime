@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Show register form/create Form
-Route::get('/register', [UserController::class, 'create'])->middleware('guest')->name('user.register');
+	// Show register form/create Form
+	Route::get('/register', [UserController::class, 'create'])->name('user.register');
 
-// Create New User
-Route::post('/register', [UserController::class, 'store'])->middleware('guest')->name('user.create');
+	// Create New User
+	Route::post('/register', [UserController::class, 'store'])->name('user.create');
 
-// Submit Logged user form
-Route::post('/login', [SessionController::class, 'store'])->name('user.store');
+	// Submit Logged user form
+	Route::post('/login', [SessionController::class, 'store'])->name('user.store');
 
-// Log In user
-Route::get('/login', [SessionController::class, 'create'])->middleware('guest')->name('user.login');
+	// Log In user
+	Route::get('/', [SessionController::class, 'create'])->name('user.login');
+
+	// Email confirmation page after submit new user
+	Route::get('/email-confirmation', [MailController::class, 'create'])->name('email.confirm');

@@ -25,7 +25,7 @@ class SessionController extends Controller
 		if (auth()->attempt($attributes))
 		{
 			session()->regenerate();
-			return redirect('/');
+			return redirect('/gg');
 		}
 
 		// if validate failed
