@@ -5,6 +5,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,7 @@ use App\Http\Controllers\DashboardController;
 
 	// show dashboard
 	Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard')->middleware('auth');
+
+	// Forgot Password
+	Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('forgot.password');
+	Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('forgot.password.store');
