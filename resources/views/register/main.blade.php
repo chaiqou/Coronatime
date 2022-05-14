@@ -20,15 +20,20 @@
                 {{-- FORM --}}
                 <div class="mt-6">
                     <div class="mt-9">
-                        <form action="/register" method="POST" class="space-y-10">
+                        <form action="/register" method="POST" class="space-y-7">
                             @csrf
 
-                            <x-form.input name='username' type='text' placeholder='username'>Username</x-form.input>
-                            <x-form.input name='email' type='email' placeholder='email'>Email</x-form.input>
-                            <x-form.input name='password' type='password' placeholder='password'>Password</x-form.input>
-                            <x-form.input name='password_confirmation' type='password' placeholder='repeat password'>
-                                Repeat
-                                password
+                            <x-form.input name='username' type='text' placeholder='Enter unique username'>
+                                <strong>Username</strong>
+                            </x-form.input>
+                            <x-form.input name='email' type='email' placeholder='Enter your email'>
+                                <strong>Email</strong>
+                            </x-form.input>
+                            <x-form.input name='password' type='password' placeholder='Fill in password'>
+                                <strong>Password</strong>
+                            </x-form.input>
+                            <x-form.input name='password_confirmation' type='password' placeholder='Repeat password'>
+                                <strong>Repeat password</strong>
                             </x-form.input>
 
                             <x-form.rememberme />

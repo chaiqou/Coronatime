@@ -17,14 +17,18 @@ class SessionController extends Controller
 	//log in user based on provided credentials
 	public function store(Request $request)
 	{
-		//validate
-		$attributes = request()->validate([
-			'username' => 'required|exists:users,username',
-			'password' => 'required',
+		$input = $request->all();
+
+		$validated = $request->validate([
+			'username'   => 'required|min:3',
+			'password'   => 'required',
 		]);
 
+		// check user auth with email? or username
+		$fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
 		// attempt login user if all provided attributes are true
-		if (auth()->attempt($attributes))
+		if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']]))
 		{
 			// if user is_verified column === 1 then log in user
 			if (Auth::user()->is_verified == 1)

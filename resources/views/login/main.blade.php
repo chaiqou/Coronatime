@@ -10,11 +10,14 @@
                 {{-- FORM --}}
                 <div class="mt-6">
                     <div class="mt-9">
-                        <form action="/login" method="POST" class="space-y-10">
+                        <form action="/login" method="POST" class="space-y-7">
                             @csrf
-                            <x-form.input name='username' type='text' placeholder='username'>Username
+                            <x-form.input name='username' type='text' placeholder='Enter unique username or email'>
+                                <strong>Username</strong>
                             </x-form.input>
-                            <x-form.input name='password' type='password' placeholder='password'>Password</x-form.input>
+                            <x-form.input name='password' type='password' placeholder='Fill in password'>
+                                <strong>password</strong>
+                            </x-form.input>
 
 
                             <div class="flex items-center justify-between">
