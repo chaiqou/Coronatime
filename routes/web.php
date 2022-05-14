@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,14 @@ use App\Http\Controllers\SessionController;
 	// Log In user
 	Route::get('/', [SessionController::class, 'create'])->name('user.login');
 
+	// Log Out user
+	Route::post('/logout', [SessionController::class, 'destroy'])->name('user.logout');
+
 	// Email confirmation page after submit new user
 	Route::get('/mail-confirmation', [MailController::class, 'create'])->name('email.confirm');
 
 	// Email verify page after click on email button
 	Route::get('/mail-verify', [MailController::class, 'verify'])->name('email.verify');
+
+	// show dashboard
+	Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard')->middleware('auth');

@@ -34,7 +34,7 @@ class SessionController extends Controller
 			if (Auth::user()->is_verified == 1)
 			{
 				session()->regenerate();
-				return redirect('/gg');
+				return redirect()->route('dashboard');
 			}
 		}
 
@@ -42,5 +42,17 @@ class SessionController extends Controller
 		throw ValidationException::withMessages([
 			'password' => 'Your provided credentials could not be verified',
 		]);
+	}
+
+	// logout user
+	public function destroy(Request $request)
+	{
+		Auth::logout();
+
+		$request->session()->invalidate();
+
+		$request->session()->regenerateToken();
+
+		return redirect('/');
 	}
 }
