@@ -36,11 +36,4 @@ class User extends Authenticatable
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 	];
-
-	// Bycrpt all users passwords using eloquent mutator
-
-	public function setPasswordAttribute($password)
-	{
-		$this->attributes['password'] = bcrypt($password);
-	}
 }

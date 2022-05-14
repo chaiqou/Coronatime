@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
@@ -14,9 +15,9 @@ class SessionController extends Controller
 	}
 
 	//log in user based on provided credentials
-	public function store()
+	public function store(Request $request)
 	{
-		// validate
+		//validate
 		$attributes = request()->validate([
 			'username' => 'required|exists:users,username',
 			'password' => 'required',
@@ -25,20 +26,17 @@ class SessionController extends Controller
 		// attempt login user if all provided attributes are true
 		if (auth()->attempt($attributes))
 		{
-			session()->regenerate();
-			return redirect('/gg');
+			// if user is_verified column === 1 then log in user
+			if (Auth::user()->is_verified == 1)
+			{
+				session()->regenerate();
+				return redirect('/gg');
+			}
 		}
 
 		// if validate failed
 		throw ValidationException::withMessages([
 			'password' => 'Your provided credentials could not be verified',
 		]);
-	}
-
-	// if user doesnot verified then dont allow login
-
-	public function credentials(Request $request)
-	{
-		return array_merge($request->only($this->username, 'password'), ['is_verified' => 1]);
 	}
 }

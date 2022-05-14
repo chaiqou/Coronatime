@@ -26,7 +26,7 @@ use App\Http\Controllers\SessionController;
 	Route::post('/login', [SessionController::class, 'store'])->name('user.store');
 
 	// Log In user
-	Route::get('/', [SessionController::class, 'create'])->name('user.login');
+	Route::get('/', [SessionController::class, 'create'])->name('user.login')->middleware('verified');
 
 	// Email confirmation page after submit new user
 	Route::get('/mail-confirmation', [MailController::class, 'create'])->name('email.confirm');

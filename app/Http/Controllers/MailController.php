@@ -31,14 +31,14 @@ class MailController extends Controller
 	public function verify()
 	{
 		$verification_code = Request::get('code');
-		$user = User::where(['verification_code' => $verification_code])->get();
+		$user = User::where(['verification_code' => $verification_code])->first();
 
 		// if user !== 0 then mark as verified user in database
 		if ($user != null)
 		{
 			$user->is_verified = 1;
 			$user->save();
-			return redirect('email.confirmation');
+			return view('mail.confirmed');
 		}
 
 		return redirect()->route('/');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -17,6 +18,14 @@ class UserController extends Controller
 
 	public function register(Request $request)
 	{
+		// validate new user before creating
+
+		$validated = $request->validate([
+			'username'           => ['required', 'min:3', Rule::unique('users', 'username')],
+			'email'              => ['required', 'email', Rule::unique('users', 'email')],
+			'password'           => 'required|confirmed|min:3',
+		]);
+
 		// create new user
 
 		$user = new User();
