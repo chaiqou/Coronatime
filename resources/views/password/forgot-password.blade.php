@@ -14,8 +14,9 @@
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Reset Password</h2>
 
             </div>
-            <form class=" space-y-16" action="#" method="POST">
-                <input type="hidden" name="remember" value="true">
+            <form class=" space-y-16" action="{{ route('password.forgot') }}" method="POST">
+                @csrf
+
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
                         <label for="email-address"><strong>Email</strong></label>

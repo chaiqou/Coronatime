@@ -5,6 +5,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
 
 /*
@@ -43,5 +44,11 @@ use App\Http\Controllers\ForgotPasswordController;
 	Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard')->middleware('auth');
 
 	// Forgot Password
-	Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('forgot.password');
-	Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('forgot.password.store');
+	Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');
+	Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('password.forgot');
+
+	// reset password
+
+	Route::get('/reset-password/{token}', [ResetPasswordController::class, 'create'])->name('password.reset.form');
+	Route::post('/reset-password', [ResetPasswordController::class, 'store'])->name('password.reset');
+	Route::get('/updated-password', [ResetPasswordController::class, 'updatedPassword'])->name('password.updated');
