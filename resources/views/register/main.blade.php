@@ -42,7 +42,7 @@
                                 <x-button>SIGN UP</x-button>
                                 <div class="flex items-center space-x-2">
                                     <h5 class="text-center mt-4 text-gray-500">Already have an account? </h5>
-                                    <a href="/login" class="font-extrabold text-center mt-4">Log in</a>
+                                    <a href="/" class="font-extrabold text-center mt-4">Log in</a>
                                 </div>
 
                             </div>
