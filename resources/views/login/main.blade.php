@@ -24,13 +24,14 @@
                                 <div class="flex items-center">
                                     <input id="rememberlogin" name="rememberlogin" type="checkbox"
                                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded" />
-                                    <label for="rememberlogin" class="ml-2 block text-sm text-gray-900"> Remember me
+                                    <label for="rememberlogin" class="ml-2 block text-sm accent-green-700 text-gray-900">
+                                        Remember me
                                     </label>
                                 </div>
 
                                 <div class="text-sm">
                                     <a href="{{ route('password.request') }}"
-                                        class="font-medium text-indigo-600 hover:text-indigo-500"> Forgot
+                                        class="font-medium  text-indigo-600 hover:text-indigo-500"> Forgot
                                         your
                                         password?
                                     </a>

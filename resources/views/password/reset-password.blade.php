@@ -1,6 +1,6 @@
 <x-layout>
-    <div class="flex justify-start items-start h-0">
-        <img class="mx-auto justify-self-start mt-4 h-10 w-auto" src="{{ asset('images/logo.png') }}" alt="Workflow">
+    <div class="flex flex-col items-center">
+        <img class="h-10 w-auto mt-8" src="{{ asset('images/logo.png') }}" alt="Workflow">
     </div>
 
     <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

@@ -27,6 +27,6 @@ class SignupEmail extends Mailable
 	 */
 	public function build()
 	{
-		return $this->from(env('MAIL_USERNAME'), 'Coronatime')->subject("Welcome to Coronatime , hope you're alive")->view('mail.signup-email', ['email_data' => $this->email_data]);
+		return $this->from(env('MAIL_USERNAME'), 'Coronatime')->subject('Confirm Email')->view('mail.signup-email', ['email_data' => $this->email_data]);
 	}
 }
