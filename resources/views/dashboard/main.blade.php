@@ -40,7 +40,8 @@
         <header>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight text-gray-900 mb-8">Worldwide Statistics</h1>
-                <a href="#" class="text-md mr-4 font-bold leading-tight text-gray-900 border-b-4 border-b-black"
+                <a href="/dashboard"
+                    class="text-md mr-4 font-bold leading-tight text-gray-900 border-b-4 border-b-black"
                     aria-current="page">
                     Worldwide
                 </a>

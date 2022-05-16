@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MailController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CountriesController;
+use App\Http\Controllers\CreateUserController;
+use App\Http\Controllers\VerifyMailController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
 
@@ -20,10 +20,10 @@ use App\Http\Controllers\ForgotPasswordController;
 */
 
 	// Show register form/create Form
-	Route::get('/register', [UserController::class, 'create'])->name('user.register');
+	Route::get('/register', [CreateUserController::class, 'create'])->name('user.register');
 
 	// Create New User
-	Route::post('/register', [UserController::class, 'register'])->name('user.create');
+	Route::post('/register', [CreateUserController::class, 'register'])->name('user.create');
 
 	// Submit Logged user form
 	Route::post('/login', [SessionController::class, 'store'])->name('user.store');
@@ -35,13 +35,13 @@ use App\Http\Controllers\ForgotPasswordController;
 	Route::post('/logout', [SessionController::class, 'destroy'])->name('user.logout');
 
 	// Email confirmation page after submit new user
-	Route::get('/mail-confirmation', [MailController::class, 'create'])->name('email.confirm');
+	Route::get('/mail-confirmation', [VerifyMailController::class, 'create'])->name('email.confirm');
 
 	// Email verify page after click on email button
-	Route::get('/mail-verify', [MailController::class, 'verify'])->name('email.verify');
+	Route::get('/mail-verify', [VerifyMailController::class, 'verify'])->name('email.verify');
 
 	// show dashboard
-	Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard')->middleware('auth');
+	Route::get('/dashboard', [CountriesController::class, 'getCoronaCases'])->name('dashboard')->middleware('auth');
 
 	// Forgot Password
 	Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');
