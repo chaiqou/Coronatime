@@ -22,6 +22,14 @@ class CountriesController extends Controller
 
 	public function country()
 	{
-		return view('dashboard.by-country');
+		$country = new Country();
+
+		$worldwide = [
+			'confirmed' => $country->sum('confirmed'),
+			'deaths'    => $country->sum('deaths'),
+			'recovered' => $country->sum('recovered'),
+		];
+
+		return view('dashboard.by-country', ['worldwide' => $worldwide, 'countries' => Country::all()]);
 	}
 }
