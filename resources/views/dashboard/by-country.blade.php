@@ -91,7 +91,7 @@
 
 
     {{-- TABLE --}}
-    <div class="px-4 max-w-7xl mx-auto overflow-y-auto sm:px-6 lg:px-8 h-96">
+    <div class="px-4 max-w-7xl  mx-auto overflow-y-auto scroll-smooth sm:px-6 lg:px-8 h-96">
 
         <div class="mt-8 flex flex-col ">
             <div class="-my-2 -mx-4  sm:-mx-6 lg:-mx-8 ">

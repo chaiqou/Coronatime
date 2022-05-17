@@ -19,6 +19,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::group(['middleware' => 'check.locale'], function () {
 	// Show register form/create Form
 	Route::get('/register', [UserController::class, 'create'])->name('user.register');
 
@@ -53,3 +54,11 @@ use App\Http\Controllers\UserController;
 	Route::get('/reset-password/{token}', [ResetPasswordController::class, 'create'])->name('password.reset.form');
 	Route::post('/reset-password', [ResetPasswordController::class, 'store'])->name('password.reset');
 	Route::get('/updated-password', [ResetPasswordController::class, 'updatedPassword'])->name('password.updated');
+});
+
+	// // language switcher
+
+	Route::get('set-locale/{locale}', function ($locale) {
+		session()->put('locale', $locale);
+		return redirect()->back();
+	})->middleware('check.locale')->name('locale.setting');

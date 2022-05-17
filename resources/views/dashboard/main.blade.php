@@ -12,14 +12,15 @@
                 <div class="ml-10 space-x-4">
 
 
-                    <a class="inline-block inline-flex shrink-0 bg-white py-2 px-4  text-base  ">English
+                    <a href="{{ route('locale.setting', 'ka') }}"
+                        class="inline-block inline-flex shrink-0 bg-white py-2 px-4  text-base  ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                     </a>
 
-                    <a
+                    <a href="{{ route('locale.setting', 'en') }}"
                         class="inline-block bg-white py-2 px-4  text-base font-medium ">{{ auth()->user()->username }}.</a>
 
                     <a class="inline-block bg-white lg:border-l py-2 px-4 text-base font-bold ">
@@ -39,7 +40,7 @@
     <div class="py-10">
         <header>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900 mb-8">Worldwide Statistics</h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 mb-8">{{ __('message.welcome') }}</h1>
                 <a href="/dashboard"
                     class="text-md mr-4 font-bold leading-tight text-gray-900 border-b-4 border-b-black"
                     aria-current="page">

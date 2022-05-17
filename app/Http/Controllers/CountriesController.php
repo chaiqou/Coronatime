@@ -36,6 +36,6 @@ class CountriesController extends Controller
 			'recovered' => $country->sum('recovered'),
 		];
 
-		return view('dashboard.by-country', ['worldwide' => $worldwide, 'countries'  => $countries->get()]);
+		return view('dashboard.by-country', ['worldwide' => $worldwide, 'countries'  => $countries->get()->sortBy('name')]);
 	}
 }
