@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Http;
+use App\Models\Country;
 
-class DashboardController extends Controller
+class CountriesController extends Controller
 {
 	public function create()
 	{
-		return view('dashboard.main');
-	}
+		$country = new Country();
 
-	public function getCoronaCases()
-	{
-		$response = Http::get('https://devtest.ge/countries');
-		$countries = $response->collect();
-		ddd($countries);
+		$state = [
+			'confirmed' => $country->sum('confirmed'),
+			'deaths'    => $country->sum('deaths'),
+			'recovered' => $country->sum('recovered'),
+		];
+
+		// return $AllCountry;
+		return view('dashboard.main', ['state' => $state]);
 	}
 }

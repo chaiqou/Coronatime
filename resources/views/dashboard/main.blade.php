@@ -61,7 +61,8 @@
                                     class=" px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-indigo-100 bg-white shadow rounded-lg overflow-hidden sm:p-6">
                                     <img src="{{ asset('images/vector3.png') }}" alt="">
                                     <dt class="text-sm font-medium text-gray-900 font-extrabold ">New Cases</dt>
-                                    <dd class="mt-1 text-3xl font-extrabold text-[#2029F3]">750,000</dd>
+                                    <dd class="mt-1 text-3xl font-extrabold text-[#2029F3]">{{ $state['confirmed'] }}
+                                    </dd>
                                 </div>
 
                                 <div
@@ -69,14 +70,16 @@
                                     <img class="mb-6" src="{{ asset('images/vector.png') }}" alt="">
                                     <dt class="text-sm font-medium text-gray-900 font-extrabold truncate">Recovered
                                     </dt>
-                                    <dd class="mt-1 text-3xl  font-extrabold text-[#0FBA68]">750,000</dd>
+                                    <dd class="mt-1 text-3xl  font-extrabold text-[#0FBA68]">{{ $state['recovered'] }}
+                                    </dd>
                                 </div>
 
                                 <div
                                     class="px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-yellow-100 bg-white shadow rounded-lg overflow-hidden sm:p-6">
                                     <img class="mb-4" src="{{ asset('images/vector2.png') }}" alt="">
-                                    <dt class="text-sm font-medium text-gray-900 font-extrabold ">Death</dt>
-                                    <dd class="mt-1 text-3xl  font-extrabold text-[#EAD621]">750,000</dd>
+                                    <dt class="text-sm font-medium text-gray-900 font-extrabold ">Deaths</dt>
+                                    <dd class="mt-1 text-3xl  font-extrabold text-[#EAD621]">{{ $state['deaths'] }}
+                                    </dd>
                                 </div>
                             </dl>
                         </div>
