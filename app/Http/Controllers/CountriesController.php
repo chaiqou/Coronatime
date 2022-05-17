@@ -22,6 +22,12 @@ class CountriesController extends Controller
 
 	public function country()
 	{
+		$countries = Country::latest();
+		if (request('search'))
+		{
+			$countries->where('name', 'like', '%' . request('search') . '%');
+		}
+
 		$country = new Country();
 
 		$worldwide = [
@@ -30,6 +36,6 @@ class CountriesController extends Controller
 			'recovered' => $country->sum('recovered'),
 		];
 
-		return view('dashboard.by-country', ['worldwide' => $worldwide, 'countries' => Country::all()]);
+		return view('dashboard.by-country', ['worldwide' => $worldwide, 'countries'  => $countries->get()]);
 	}
 }
