@@ -12,8 +12,10 @@
                 <div class="ml-10 space-x-4">
 
 
-                    <a href="{{ route('locale.setting', 'ka') }}"
+                    <a href="
+                        {{ Config::get('app.locale') === 'en' ? route('locale.setting', 'ka') : route('locale.setting', 'en') }}"
                         class="inline-block inline-flex shrink-0 bg-white py-2 px-4  text-base  ">
+                        {{ Config::get('app.locale') === 'ka' ? 'ქართული' : 'English' }}
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -71,7 +73,8 @@
                                     <img class="mb-6" src="{{ asset('images/vector.png') }}" alt="">
                                     <dt class="text-sm font-medium text-gray-900 font-extrabold truncate">Recovered
                                     </dt>
-                                    <dd class="mt-1 text-3xl  font-extrabold text-[#0FBA68]">{{ $state['recovered'] }}
+                                    <dd class="mt-1 text-3xl  font-extrabold text-[#0FBA68]">
+                                        {{ $state['recovered'] }}
                                     </dd>
                                 </div>
 
