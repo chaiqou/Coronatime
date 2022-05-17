@@ -51,7 +51,13 @@ class UserController extends Controller
 			}
 			while (!$countryFullData->has('code'));
 
+			$nameCountry = [
+				'ka' => $country['name']['ka'],
+				'en' => $country['name']['en'],
+			];
+
 			Country::create([
+				'name'        => $nameCountry['en'],
 				'code'        => $countryFullData['code'],
 				'confirmed'   => $countryFullData['confirmed'],
 				'recovered'   => $countryFullData['recovered'],
