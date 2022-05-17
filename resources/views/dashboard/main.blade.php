@@ -45,7 +45,7 @@
                     aria-current="page">
                     Worldwide
                 </a>
-                <a href="#" class="text-md leading-tight text-gray-900" aria-current="page"> By Country
+                <a href="/by-country" class="text-md leading-tight text-gray-900" aria-current="page"> By Country
                 </a>
             </div>
         </header>

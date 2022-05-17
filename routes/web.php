@@ -42,7 +42,8 @@ use App\Http\Controllers\UserController;
 
 	// show dashboard
 	Route::get('/dashboard', [CountriesController::class, 'create'])->name('dashboard')->middleware('auth');
-	Route::post('/dashboard', [CountriesController::class, 'getCountryDataFromApi']);
+	Route::get('/by-country', [CountriesController::class, 'country'])->name('dashboard.country');
+	// Route::post('/dashboard', [CountriesController::class, 'getCountryDataFromApi']);
 
 	// Forgot Password
 	Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');

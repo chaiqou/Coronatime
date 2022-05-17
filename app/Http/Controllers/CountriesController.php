@@ -19,4 +19,9 @@ class CountriesController extends Controller
 		// return $AllCountry;
 		return view('dashboard.main', ['state' => $state]);
 	}
+
+	public function country()
+	{
+		return view('dashboard.by-country');
+	}
 }
