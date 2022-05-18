@@ -63,7 +63,9 @@
                                 <div
                                     class=" px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-indigo-100 bg-white shadow rounded-lg overflow-hidden sm:p-6">
                                     <img src="{{ asset('images/vector3.png') }}" alt="">
-                                    <dt class="text-sm font-medium text-gray-900 font-extrabold ">New Cases</dt>
+                                    <dt class="text-sm font-medium text-gray-900 font-extrabold ">New Cases
+
+                                    </dt>
                                     <dd class="mt-1 text-3xl font-extrabold text-[#2029F3]">{{ $state['confirmed'] }}
                                     </dd>
                                 </div>

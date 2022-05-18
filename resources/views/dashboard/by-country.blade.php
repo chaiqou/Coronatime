@@ -1,5 +1,4 @@
 <x-layout>
-
     <header>
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
             <div class="w-full py-6 flex items-center justify-between lg:border-b border-gray-500 lg:border-none">
@@ -102,13 +101,32 @@
                                 <tr>
                                     <th scope="col"
                                         class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                        Location</th>
+
+                                        Location
+
+                                        <span>
+                                            <a href="{{ URL::current() . '?sort=name_asc' }}"
+                                                class="cursor-pointer">&uarr;</a>
+                                            <a href="{{ URL::current() . '?sort=name_desc' }}"
+                                                class="cursor-pointer">&darr;</a>
+
+                                        </span>
+                                    </th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        New Cases</th>
+                                        New Cases
+                                        <a href="{{ URL::current() . '?sort=confirmed_asc' }}">&uarr;</a>
+                                        <a href="{{ URL::current() . '?sort=confirmed_desc' }}">&darr;</a>
+                                    </th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Deaths</th>
+                                        Deaths
+                                        <a href="{{ URL::current() . '?sort=deaths_asc' }}">&uarr;</a>
+                                        <a href="{{ URL::current() . '?sort=deaths_desc' }}">&darr;</a>
+                                    </th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Recovered</th>
+                                        Recovered
+                                        <a href="{{ URL::current() . '?sort=recovered_asc' }}">&uarr;</a>
+                                        <a href="{{ URL::current() . '?sort=recovered_desc' }}">&darr;</a>
+                                    </th>
 
                                 </tr>
                             </thead>
@@ -155,7 +173,4 @@
             </div>
         </div>
     </div>
-
-
-
 </x-layout>
