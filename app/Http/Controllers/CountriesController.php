@@ -17,7 +17,6 @@ class CountriesController extends Controller
 			'recovered' => $country->sum('recovered'),
 		];
 
-		// return $AllCountry;
 		return view('dashboard.main', ['state' => $state]);
 	}
 
@@ -72,8 +71,6 @@ class CountriesController extends Controller
 		{
 			$countries = Country::orderBy('recovered', 'desc');
 		}
-
-		// return view
 
 		return view('dashboard.by-country', ['worldwide' => $worldwide, 'countries'  => $countries->get()]);
 	}
