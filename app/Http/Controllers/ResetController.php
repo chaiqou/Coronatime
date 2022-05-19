@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 
-class ResetPasswordController extends Controller
+class ResetController extends Controller
 {
 	// show reset password page
 	public function create(Request $request, $token = null)

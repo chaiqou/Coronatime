@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 
-class VerifyMailController extends Controller
+class MailController extends Controller
 {
 	// show confirm email message page
 	public function create()

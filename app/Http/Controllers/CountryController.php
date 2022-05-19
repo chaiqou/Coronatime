@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use Illuminate\Support\Facades\Request;
 
-class CountriesController extends Controller
+class CountryController extends Controller
 {
 	public function create()
 	{

@@ -27,14 +27,16 @@ class SessionController extends Controller
 		// check user auth with email? or username
 		$fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-		// attempt login user if all provided attributes are true
-		if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']]))
 		{
-			// if user is_verified column === 1 then log in user
-			if (Auth::user()->is_verified == 1)
+		// attempt login user if all provided attributes are true
+			if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']]))
 			{
-				session()->regenerate();
-				return redirect()->route('dashboard');
+				// if user is_verified column === 1 then log in user
+				if (Auth::user()->is_verified == 1)
+				{
+					session()->regenerate();
+					return redirect()->route('dashboard');
+				}
 			}
 		}
 

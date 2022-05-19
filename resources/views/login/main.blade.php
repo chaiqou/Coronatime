@@ -19,20 +19,44 @@
                     <div class="mt-9">
                         <form action="/login" method="POST" class="space-y-7">
                             @csrf
-                            <x-form.input name='username' type='text' placeholder='Enter unique username or email'>
-                                <strong>{{ __('message.username') }}</strong>
-                            </x-form.input>
-                            <x-form.input name='password' type='password' placeholder='Fill in password'>
-                                <strong>{{ __('message.password') }}</strong>
-                            </x-form.input>
+
+                            <div>
+                                <label for="" class="block text-sm font-medium text-gray-700">
+                                    <strong>{{ __('message.username') }}</strong>
+                                </label>
+                                <div class="mt-1">
+                                    <input id="username" name="username" type="text" placeholder="satargmni"
+                                        autocomplete="username" value="{{ old('username') }}"
+                                        class="appearance-none block w-full p-4 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+
+                                    @error('username')
+                                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div>
+                                <label for="" class="block text-sm font-medium text-gray-700">
+                                    <strong>{{ __('message.password') }}</strong>
+                                </label>
+                                <div class="mt-1">
+                                    <input id="password" name="password" type="password" placeholder="satargmni"
+                                        autocomplete="password" value="{{ old('password') }}"
+                                        class="appearance-none block w-full p-4 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+
+                                    @error('password')
+                                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+
+
 
 
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center">
-                                    <input id="rememberlogin" name="rememberlogin" type="checkbox"
+                                    <input id="rememberme" name="rememberme" type="checkbox"
                                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded" />
-                                    <label for="rememberlogin"
-                                        class="ml-2 block text-sm accent-green-700 text-gray-900">
+                                    <label for="rememberme" class="ml-2 block text-sm accent-green-700 text-gray-900">
                                         {{ __('message.remember_me') }}
                                     </label>
                                 </div>
