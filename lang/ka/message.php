@@ -36,6 +36,7 @@ return [
 
 	'reset_password'           => 'შეცვალე პაროლი',
 	'uppercase_reset_password' => 'შეცვლა',
+	'password_confirmation'    => 'პაროლის დადასტურება',
 
 	'confirmation_email' => 'ელ-ფოსტაზე გამოგიგზავნეთ წერილი',
 	'updated_password'   => 'თქვენი პაროლი წარმატებით განახლდა',

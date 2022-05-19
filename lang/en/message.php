@@ -36,6 +36,7 @@ return [
 
 	'reset_password'           => 'Reset Password',
 	'uppercase_reset_password' => 'RESET PASSWORD',
+	'password_confirmation'    => 'Password Confirmation',
 
 	'confirmation_email' => 'We have sent you a confirmation email',
 	'updated_password'   => 'Your password has been updeted successfully',

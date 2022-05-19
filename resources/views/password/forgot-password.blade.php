@@ -1,4 +1,4 @@
-{{-- <x-layout>
+<x-layout>
     <div class="flex justify-start items-start h-0">
         <img class="mx-auto justify-self-start h-10 w-auto" src="{{ asset('images/logo.png') }}" alt="Workflow">
     </div>
@@ -37,9 +37,9 @@
         </div>
     </div>
 
-</x-layout> --}}
+</x-layout>
 
-<x-layout>
+{{-- <x-layout>
     <div class="flex justify-start items-start h-0">
         <img class="mx-auto justify-self-start h-10 w-auto" src="{{ asset('images/logo.png') }}" alt="Workflow">
     </div>
@@ -75,6 +75,12 @@
                 </div>
             </form>
         </div>
+        <a href="
+            {{ Config::get('app.locale') === 'en' ? route('locale.setting', 'ka') : route('locale.setting', 'en') }}"
+            class="inline-block inline-flex shrink-0 bg-white py-2 px-4  text-base  ">
+            {{ Config::get('app.locale') === 'ka' ? 'ქართული' : 'English' }}
+
+        </a>
     </div>
 
-</x-layout>
+</x-layout> --}}
