@@ -48,6 +48,7 @@ Route::group(['middleware' => 'check.locale'], function () {
 
 	// Forgot Password
 	Route::get('/forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');
+	Route::post('/forgot-password', [ForgotPasswordController::class, 'store'])->name('forgot.password.link');
 
 	// reset password
 

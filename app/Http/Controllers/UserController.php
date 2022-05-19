@@ -18,7 +18,7 @@ class UserController extends Controller
 		return view('register.main');
 	}
 
-	public function register(Request $request)
+	public function register(Request $request, CountriesController $countriesController)
 	{
 		// validate new user before creating
 
@@ -39,31 +39,34 @@ class UserController extends Controller
 
 		// fetch from api countries code
 
-		$countries = Http::get('https://devtest.ge/countries')->collect();
-
 		// get all country infirmation based countries code da put it in database for specific user
 
-		foreach ($countries as $country)
+		if (!Country::exists())
 		{
-			do
+			$countries = Http::get('https://devtest.ge/countries')->collect();
+
+			foreach ($countries as $country)
 			{
-				$countryFullData = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->collect();
+				do
+				{
+					$countryFullData = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->collect();
+				}
+				while (!$countryFullData->has('code'));
+
+				$nameCountry = [
+					'ka' => $country['name']['ka'],
+					'en' => $country['name']['en'],
+				];
+
+				Country::create([
+					'name'        => $nameCountry['en'],
+					'code'        => $countryFullData['code'],
+					'confirmed'   => $countryFullData['confirmed'],
+					'recovered'   => $countryFullData['recovered'],
+					'critical'    => $countryFullData['critical'],
+					'deaths'      => $countryFullData['deaths'],
+				]);
 			}
-			while (!$countryFullData->has('code'));
-
-			$nameCountry = [
-				'ka' => $country['name']['ka'],
-				'en' => $country['name']['en'],
-			];
-
-			Country::create([
-				'name'        => $nameCountry['en'],
-				'code'        => $countryFullData['code'],
-				'confirmed'   => $countryFullData['confirmed'],
-				'recovered'   => $countryFullData['recovered'],
-				'critical'    => $countryFullData['critical'],
-				'deaths'      => $countryFullData['deaths'],
-			]);
 		}
 
 		if ($user != null)

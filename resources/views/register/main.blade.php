@@ -15,7 +15,14 @@
                 </div>
 
                 {{-- ლოგო და ველქამის კონტეინერი --}}
-                <x-form.header welcome='Welcome to the Coronatime' please='Please enter required info to sign up' />
+                <div>
+                    <img class="h-10 w-auto " src="{{ asset('images/logo.png') }}" alt="Workflow">
+                    <h2 class="text-2xl mt-12  font-sans font-extrabold">{{ __('message.welcome_to_the_coronatime') }}
+                    </h2>
+                    <p class="mt-2 text-sm text-gray-600">
+                        {{ __('message.please_enter_sign_up_info') }}
+                    </p>
+                </div>
 
                 {{-- FORM --}}
                 <div class="mt-6">
@@ -24,25 +31,27 @@
                             @csrf
 
                             <x-form.input name='username' type='text' placeholder='Enter unique username'>
-                                <strong>Username</strong>
+                                <strong>{{ __('message.username') }}</strong>
                             </x-form.input>
                             <x-form.input name='email' type='email' placeholder='Enter your email'>
-                                <strong>Email</strong>
+                                <strong>{{ __('message.email') }}</strong>
                             </x-form.input>
                             <x-form.input name='password' type='password' placeholder='Fill in password'>
-                                <strong>Password</strong>
+                                <strong>{{ __('message.password') }}</strong>
                             </x-form.input>
                             <x-form.input name='password_confirmation' type='password' placeholder='Repeat password'>
-                                <strong>Repeat password</strong>
+                                <strong>{{ __('message.repeat_password') }}</strong>
                             </x-form.input>
 
                             <x-form.rememberme />
 
                             <div class="flex flex-col items-center">
-                                <x-button>SIGN UP</x-button>
+                                <x-button>{{ __('message.uppercase_sign_up') }}</x-button>
                                 <div class="flex items-center space-x-2">
-                                    <h5 class="text-center mt-4 text-gray-500">Already have an account? </h5>
-                                    <a href="/" class="font-extrabold text-center mt-4">Log in</a>
+                                    <h5 class="text-center mt-4 text-gray-500">
+                                        {{ __('message.already_have_an_account') }}</h5>
+                                    <a href="/"
+                                        class="font-extrabold text-center mt-4">{{ __('message.lowercase_log_in') }}</a>
                                 </div>
 
                             </div>
@@ -51,6 +60,12 @@
                 </div>
 
             </div>
+            <a href="
+            {{ Config::get('app.locale') === 'en' ? route('locale.setting', 'ka') : route('locale.setting', 'en') }}"
+                class="inline-block inline-flex shrink-0 bg-white py-2 px-4  text-base  ">
+                {{ Config::get('app.locale') === 'ka' ? 'ქართული' : 'English' }}
+
+            </a>
         </div>
 
         {{-- IMAGE --}}
