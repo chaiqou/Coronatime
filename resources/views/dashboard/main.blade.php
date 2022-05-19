@@ -28,7 +28,7 @@
                     <a class="inline-block bg-white lg:border-l py-2 px-4 text-base font-bold ">
                         <form action="/logout" method="POST">
                             @csrf
-                            <button type="submit">Log Out</button>
+                            <button type="submit">{{ __('message.log_out') }}</button>
                         </form>
 
                     </a>
@@ -46,9 +46,10 @@
                 <a href="/dashboard"
                     class="text-md mr-4 font-bold leading-tight text-gray-900 border-b-4 border-b-black"
                     aria-current="page">
-                    Worldwide
+                    {{ __('message.worldwide') }}
                 </a>
-                <a href="/by-country" class="text-md leading-tight text-gray-900" aria-current="page"> By Country
+                <a href="/by-country" class="text-md leading-tight text-gray-900" aria-current="page">
+                    {{ __('message.by_country') }}
                 </a>
             </div>
         </header>
@@ -63,7 +64,8 @@
                                 <div
                                     class=" px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-indigo-100 bg-white shadow rounded-lg overflow-hidden sm:p-6">
                                     <img src="{{ asset('images/vector3.png') }}" alt="">
-                                    <dt class="text-sm font-medium text-gray-900 font-extrabold ">New Cases
+                                    <dt class="text-sm font-medium text-gray-900 font-extrabold ">
+                                        {{ __('message.new_cases') }}
 
                                     </dt>
                                     <dd class="mt-1 text-3xl font-extrabold text-[#2029F3]">{{ $state['confirmed'] }}
@@ -73,7 +75,8 @@
                                 <div
                                     class="px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-green-100 bg-white shadow rounded-lg overflow-hidden sm:p-6">
                                     <img class="mb-6" src="{{ asset('images/vector.png') }}" alt="">
-                                    <dt class="text-sm font-medium text-gray-900 font-extrabold truncate">Recovered
+                                    <dt class="text-sm font-medium text-gray-900 font-extrabold truncate">
+                                        {{ __('message.recovered') }}
                                     </dt>
                                     <dd class="mt-1 text-3xl  font-extrabold text-[#0FBA68]">
                                         {{ $state['recovered'] }}
@@ -83,7 +86,8 @@
                                 <div
                                     class="px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-yellow-100 bg-white shadow rounded-lg overflow-hidden sm:p-6">
                                     <img class="mb-4" src="{{ asset('images/vector2.png') }}" alt="">
-                                    <dt class="text-sm font-medium text-gray-900 font-extrabold ">Deaths</dt>
+                                    <dt class="text-sm font-medium text-gray-900 font-extrabold ">
+                                        {{ __('message.deaths') }}</dt>
                                     <dd class="mt-1 text-3xl  font-extrabold text-[#EAD621]">{{ $state['deaths'] }}
                                     </dd>
                                 </div>

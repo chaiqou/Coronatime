@@ -11,20 +11,22 @@
                 <div class="ml-10 space-x-4">
 
 
-                    <a class="inline-block inline-flex shrink-0 bg-white py-2 px-4  text-base  ">English
+                    <a href="
+                    {{ Config::get('app.locale') === 'en' ? route('locale.setting', 'ka') : route('locale.setting', 'en') }}"
+                        class="inline-block inline-flex shrink-0 bg-white py-2 px-4  text-base  ">
+                        {{ Config::get('app.locale') === 'ka' ? 'ქართული' : 'English' }}
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                     </a>
-
                     <a
                         class="inline-block bg-white py-2 px-4  text-base font-medium ">{{ auth()->user()->username }}.</a>
 
                     <a class="inline-block bg-white lg:border-l py-2 px-4 text-base font-bold ">
                         <form action="/logout" method="POST">
                             @csrf
-                            <button type="submit">Log Out</button>
+                            <button type="submit">{{ __('message.log_out') }}</button>
                         </form>
 
                     </a>
@@ -38,13 +40,15 @@
     <div class="py-10">
         <header>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900 mb-8">Statistics by country</h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 mb-8">
+                    {{ __('message.statistics_by_country') }}</h1>
 
-                <a href="/dashboard" class="text-md mr-4 leading-tight text-gray-900" aria-current="page"> Worldwide
+                <a href="/dashboard" class="text-md mr-4 leading-tight text-gray-900" aria-current="page">
+                    {{ __('message.worldwide') }}
                 </a>
                 <a href="/by-country" class="text-md font-bold leading-tight text-gray-900 border-b-4  border-b-black"
                     aria-current="page">
-                    By Country
+                    {{ __('message.by_country') }}
                 </a>
             </div>
 
@@ -78,7 +82,7 @@
 
                 <input type="search" name="search" id="search" value="{{ request('search') }}"
                     class="pr-3 pl-10 px-4 max-w-2xl mx-auto font-semibold  border-2 h-[48px] shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    placeholder="Search by country">
+                    placeholder="{{ __('message.search_by_country') }}">
             </div>
             </input>
 
@@ -102,30 +106,30 @@
                                     <th scope="col"
                                         class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
 
-                                        Location
+                                        {{ __('message.location') }}
 
                                         <span>
-                                            <a href="{{ URL::current() . '?sort=name_asc' }}"
-                                                class="cursor-pointer">&uarr;</a>
                                             <a href="{{ URL::current() . '?sort=name_desc' }}"
                                                 class="cursor-pointer">&darr;</a>
+                                            <a href="{{ URL::current() . '?sort=name_asc' }}"
+                                                class="cursor-pointer">&uarr;</a>
 
                                         </span>
                                     </th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        New Cases
-                                        <a href="{{ URL::current() . '?sort=confirmed_asc' }}">&uarr;</a>
-                                        <a href="{{ URL::current() . '?sort=confirmed_desc' }}">&darr;</a>
+                                        {{ __('message.new_cases') }}
+                                        <a href="{{ URL::current() . '?sort=confirmed_asc' }}">&darr;</a>
+                                        <a href="{{ URL::current() . '?sort=confirmed_desc' }}">&uarr;</a>
                                     </th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Deaths
-                                        <a href="{{ URL::current() . '?sort=deaths_asc' }}">&uarr;</a>
-                                        <a href="{{ URL::current() . '?sort=deaths_desc' }}">&darr;</a>
+                                        {{ __('message.deaths') }}
+                                        <a href="{{ URL::current() . '?sort=deaths_asc' }}">&darr;</a>
+                                        <a href="{{ URL::current() . '?sort=deaths_desc' }}">&uarr;</a>
                                     </th>
                                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Recovered
-                                        <a href="{{ URL::current() . '?sort=recovered_asc' }}">&uarr;</a>
-                                        <a href="{{ URL::current() . '?sort=recovered_desc' }}">&darr;</a>
+                                        {{ __('message.recovered') }}
+                                        <a href="{{ URL::current() . '?sort=recovered_asc' }}">&darr;</a>
+                                        <a href="{{ URL::current() . '?sort=recovered_desc' }}">&uarr;</a>
                                     </th>
 
                                 </tr>
@@ -134,7 +138,7 @@
                                 <tr>
                                     <td
                                         class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                        Worldwide</td>
+                                        {{ __('message.worldwide') }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                         {{ $worldwide['confirmed'] }}
                                     </td>
