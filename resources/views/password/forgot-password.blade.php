@@ -19,7 +19,7 @@
                 </h2>
 
             </div>
-            <form class=" space-y-16" action="{{ route('password.request') }}" method="POST">
+            <form class=" space-y-16" action="{{ route('forgot.password.form') }}" method="POST">
                 @csrf
 
                 <div class="rounded-md shadow-sm -space-y-px">

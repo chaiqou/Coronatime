@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Country;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
@@ -11,17 +13,13 @@ use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
-	// Show register form/create Form
-
-	public function create()
+	public function index(): View
 	{
 		return view('register.main');
 	}
 
-	public function register(Request $request, CountriesController $countriesController)
+	public function registration(Request $request): RedirectResponse
 	{
-		// validate new user before creating
-
 		$validated = $request->validate([
 			'username'           => ['required', 'min:3', Rule::unique('users', 'username')],
 			'email'              => ['required', 'email', Rule::unique('users', 'email')],
@@ -36,8 +34,6 @@ class UserController extends Controller
 		$user->password = Hash::make($request->password);
 		$user->verification_code = sha1(time());
 		$user->save();
-
-		// fetch from api countries code
 
 		// get all country infirmation based countries code da put it in database for specific user
 
@@ -73,13 +69,11 @@ class UserController extends Controller
 		{
 			// if user created and !== null , then send email
 
-			VerifyMailController::sendSignupEmail($user->username, $user->email, $user->verification_code);
+			MailController::sendSignupEmail($user->username, $user->email, $user->verification_code);
 
-			// after send email redirect to email confirmation page
 			return redirect('/mail-confirmation');
 		}
 
-		// if user doesn't created redirect back with error message
-		return redirect()->back()->with(session()->flash('alert-danger', 'Something went wrong!'));
+		return redirect()->back();
 	}
 }

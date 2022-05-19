@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\SignupEmail;
 use App\Models\User;
+use App\Mail\SignupEmail;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 
 class MailController extends Controller
 {
 	// show confirm email message page
-	public function create()
+	public function index(): View
 	{
 		return view('mail.confirmation');
 	}
@@ -28,7 +30,7 @@ class MailController extends Controller
 	}
 
 	// verify email
-	public function verify()
+	public function verification(): RedirectResponse
 	{
 		$verification_code = Request::get('code');
 		$user = User::where(['verification_code' => $verification_code])->first();

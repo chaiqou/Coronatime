@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-class SessionController extends Controller
+class AuthController extends Controller
 {
 	// show login page
-	public function create()
+	public function index(): View
 	{
 		return view('login.main');
 	}
 
 	//log in user based on provided credentials
-	public function store(Request $request)
+	public function login(Request $request): RedirectResponse
 	{
 		$input = $request->all();
 
@@ -47,7 +49,7 @@ class SessionController extends Controller
 	}
 
 	// logout user
-	public function destroy(Request $request)
+	public function logout(Request $request): RedirectResponse
 	{
 		Auth::logout();
 

@@ -5,25 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 
 class ResetController extends Controller
 {
 	// show reset password page
-	public function create(Request $request, $token = null)
+	public function index(Request $request, $token = null): View
 	{
 		return view('password.reset-password')->with(['token' => $token, 'email' => $request->email]);
 	}
 
 	// show updated password page
-	public function updatedPassword()
+	public function updatedPassword(): View
 	{
 		return view('password.updated-password');
 	}
 
 	// reset password
-	public function store(Request $request)
+	public function resetPassword(Request $request): RedirectResponse
 	{
 		$request->validate([
 			'email'                 => 'required|email',

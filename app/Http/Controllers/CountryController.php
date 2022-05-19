@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Request;
 
 class CountryController extends Controller
 {
-	public function create()
+	public function worldwide(): View
 	{
 		$country = new Country();
 
@@ -20,7 +21,7 @@ class CountryController extends Controller
 		return view('dashboard.main', ['state' => $state]);
 	}
 
-	public function country()
+	public function byCountry(): View
 	{
 		$countries = Country::latest();
 

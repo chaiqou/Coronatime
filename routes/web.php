@@ -6,8 +6,8 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\ForgotController;
-use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,42 +21,36 @@ use App\Http\Controllers\CountryController;
 */
 
 Route::group(['middleware' => 'check.locale'], function () {
-	// Show register form/create Form
-	Route::get('/register', [UserController::class, 'create'])->name('user.register');
+	// Registration
+	Route::get('/register', [UserController::class, 'index'])->name('user.registration.form');
+	Route::post('/register', [UserController::class, 'registration'])->name('user.registration');
 
-	// Create New User
-	Route::post('/register', [UserController::class, 'register'])->name('user.create');
+	// Log In
+	Route::get('/', [AuthController::class, 'index'])->name('user.login.form');
+	Route::post('/login', [AuthController::class, 'login'])->name('user.login');
 
-	// Submit Logged user form
-	Route::post('/login', [AuthController::class, 'store'])->name('user.store');
+	// Log Out
+	Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
 
-	// Log In user
-	Route::get('/', [AuthController::class, 'create'])->name('user.login');
+	// Mail confirmation and verify pages
+	Route::get('/mail-confirmation', [MailController::class, 'index'])->name('mail.confirmation');
+	Route::get('/mail-verify', [MailController::class, 'verification'])->name('mail.verification');
 
-	// Log Out user
-	Route::post('/logout', [AuthController::class, 'destroy'])->name('user.logout');
-
-	// Email confirmation page after submit new user
-	Route::get('/mail-confirmation', [MailController::class, 'create'])->name('email.confirm');
-
-	// Email verify page after click on email button
-	Route::get('/mail-verify', [MailController::class, 'verify'])->name('email.verify');
-
-	// show dashboard
-	Route::get('/dashboard', [CountryController::class, 'create'])->name('dashboard')->middleware('auth');
-	Route::get('/by-country', [CountryController::class, 'country'])->name('dashboard.country');
+	// Dashboard
+	Route::get('/dashboard', [CountryController::class, 'worldwide'])->name('dashboard.worldwide')->middleware('auth');
+	Route::get('/by-country', [CountryController::class, 'byCountry'])->name('dashboard.country')->middleware('auth');
 
 	// Forgot Password
-	Route::get('/forgot-password', [ForgotController::class, 'create'])->name('password.request');
-	Route::post('/forgot-password', [ForgotController::class, 'store'])->name('forgot.password.link');
+	Route::get('/forgot-password', [ForgotController::class, 'index'])->name('forgot.password.form');
+	Route::post('/forgot-password', [ForgotController::class, 'sendResetLink'])->name('forgot.password.link');
 
 	// reset password
+	Route::get('/reset-password/{token}', [ResetController::class, 'index'])->name('reset.password.form');
+	Route::post('/reset-password', [ResetController::class, 'resetPassword'])->name('reset.password');
 
-	Route::get('/reset-password/{token}', [ResetController::class, 'create'])->name('password.reset.form');
-	Route::post('/reset-password', [ResetController::class, 'store'])->name('password.reset');
-	Route::get('/updated-password', [ResetController::class, 'updatedPassword'])->name('password.updated');
+	// Updated password
+	Route::get('/updated-password', [ResetController::class, 'updatedPassword'])->name('updated.password');
 });
 
-	// // language switcher
-
-	Route::get('set-locale/{locale}', [LanguageController::class, 'index'])->middleware('check.locale')->name('locale.setting');
+	// language switcher
+	Route::get('set-locale/{locale}', [LanguageController::class, 'index'])->name('locale.setting')->middleware('check.locale');

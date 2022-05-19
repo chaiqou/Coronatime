@@ -62,7 +62,7 @@
                                 </div>
 
                                 <div class="text-sm">
-                                    <a href="{{ route('password.request') }}"
+                                    <a href="{{ route('forgot.password.form') }}"
                                         class="font-medium  text-indigo-600 hover:text-indigo-500">
                                         {{ __('message.forgot_password') }}
                                     </a>
