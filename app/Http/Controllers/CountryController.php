@@ -23,7 +23,7 @@ class CountryController extends Controller
 
 	public function byCountry(): View
 	{
-		$countries = Country::all();
+		$countries = Country::latest();
 
 		if (request('search'))
 		{

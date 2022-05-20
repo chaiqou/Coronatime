@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ResetController;
-use App\Http\Controllers\ForgotController;
 use App\Http\Controllers\CountryController;
-use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\Mail\MailController;
+use App\Http\Controllers\Mail\ResetController;
+use App\Http\Controllers\Mail\ForgotController;
+use App\Http\Controllers\Session\AuthController;
+use App\Http\Controllers\Session\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ Route::group(['middleware' => 'check.locale'], function () {
 
 	// Forgot Password
 	Route::get('/forgot-password', [ForgotController::class, 'index'])->name('forgot.password.form');
-	Route::post('/forgot-password', [ForgotController::class, 'sendResetLink'])->name('forgot.password.link');
+	Route::post('/forgot-password', [ForgotController::class, 'forgotPasswordEmail'])->name('forgot.password.link');
 
 	// reset password
 	Route::get('/reset-password/{token}', [ResetController::class, 'index'])->name('reset.password.form');
@@ -53,4 +53,4 @@ Route::group(['middleware' => 'check.locale'], function () {
 });
 
 	// language switcher
-	Route::get('set-locale/{locale}', [LanguageController::class, 'index'])->name('locale.setting')->middleware('check.locale');
+	Route::get('set-locale/{locale}', [LanguageController::class, 'switctchLanguageLocale'])->name('locale.setting')->middleware('check.locale');
