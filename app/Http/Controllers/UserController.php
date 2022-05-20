@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Country;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Mail\MailController;
+use App\Http\Requests\RegistrationRequest;
 
 class UserController extends Controller
 {
@@ -18,24 +17,20 @@ class UserController extends Controller
 		return view('register.main');
 	}
 
-	public function registration(Request $request): RedirectResponse
+	public function registration(RegistrationRequest $request): RedirectResponse
 	{
-		$validated = $request->validate([
-			'username'           => ['required', 'min:3', Rule::unique('users', 'username')],
-			'email'              => ['required', 'email', Rule::unique('users', 'email')],
-			'password'           => 'required|confirmed|min:3',
+		$validated = $request->validated();
+
+		$user = User::create([
+			'username'          => $request->username,
+			'email'             => $request->email,
+			'password'          => bcrypt($request->password),
+			'verification_code' => sha1(time()),
 		]);
 
-		// create new user
-
-		$user = new User();
-		$user->username = $request->username;
-		$user->email = $request->email;
-		$user->password = Hash::make($request->password);
-		$user->verification_code = sha1(time());
-		$user->save();
-
-		// get all country infirmation based countries code da put it in database for specific user
+		/* after first registration (only for one time)
+		 * this logic fetch data for countries database
+		 */
 
 		if (!Country::exists())
 		{
@@ -67,8 +62,6 @@ class UserController extends Controller
 
 		if ($user != null)
 		{
-			// if user created and !== null , then send email
-
 			MailController::sendSignupEmail($user->username, $user->email, $user->verification_code);
 
 			return redirect('/mail-confirmation');

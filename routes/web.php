@@ -34,7 +34,7 @@ Route::group(['middleware' => 'check.locale'], function () {
 
 	// Mail confirmation and verify pages
 	Route::get('/mail-confirmation', [MailController::class, 'index'])->name('mail.confirmation');
-	Route::get('/mail-verify', [MailController::class, 'verification'])->name('mail.verification');
+	Route::get('/mail-verify', [MailController::class, 'verificationEmail'])->name('mail.verification');
 
 	// Dashboard
 	Route::get('/dashboard', [CountryController::class, 'worldwide'])->name('dashboard.worldwide')->middleware('auth');
