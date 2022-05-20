@@ -27,7 +27,7 @@
                         <label for="email-address"><strong>{{ __('message.email') }}</strong></label>
                         <input id="email-address" name="email" type="email" autocomplete="email" required
                             class="appearance-none w-full p-4  rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                            placeholder="Email address">
+                            placeholder="{{ __('message.email_placeholder') }}">
                     </div>
 
                 </div>

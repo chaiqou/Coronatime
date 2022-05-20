@@ -37,7 +37,7 @@ class ForgotController extends Controller
 			'created_at' => Carbon::now(),
 		]);
 
-		$action_link = route('password.reset.form', ['token' => $token, 'email' => $request->email]);
+		$action_link = route('reset.password.form', ['token' => $token, 'email' => $request->email]);
 		$body = 'Reset password';
 
 		Mail::send('mail/email-forgot', ['action_link' => $action_link, 'body' => $body], function ($message) use ($request) {

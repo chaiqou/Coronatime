@@ -38,7 +38,21 @@ return [
 	'uppercase_reset_password' => 'შეცვლა',
 	'password_confirmation'    => 'პაროლის დადასტურება',
 
-	'confirmation_email' => 'ელ-ფოსტაზე გამოგიგზავნეთ წერილი',
-	'updated_password'   => 'თქვენი პაროლი წარმატებით განახლდა',
-	'sign_in'            => 'შესვლის გვერდი',
+	'confirmation_email'        => 'ელ-ფოსტაზე გამოგიგზავნეთ წერილი',
+	'your_account_is_confirmed' => 'თქვენი ექაუნთი დადასტურებულია, შეგიძლიათ შეხვიდეთ სისტემაში',
+	'updated_password'          => 'თქვენი პაროლი წარმატებით განახლდა',
+	'sign_in'                   => 'შესვლის გვერდი',
+
+	'invalid_password' => 'თქვენი მოწოდებული ინფორმაცია არასწორია',
+
+	'username_placeholder'              => 'შეიყვანეთ მომხარებლის სახელი ან ემაილი',
+	'password_placeholder'              => 'შეიყვანე პაროლი',
+	'repeat_password_placeholder'       => 'გაიმეორეთ პაროლი',
+	'email_placeholder'                 => 'შეიყვანეთ ემაილი',
+	'enter_unique_username_placeholder' => 'შეიყვანეთ მომხარებელის სახელი',
+
+	'username_error_message'      => 'მომხმარებლის სახელი უნდა იყოს უნიკალური, უნდა შედგებოდეს მინ 3 სიმბოლოსგან',
+	'email_error_message'         => 'ემეალი სავალდებულოა, უნდა იყოს უნიკალური',
+	'password_error_message'      => 'პაროლი არასწორია ან ასეთი მომხმარებელი არ არსებობს',
+	'loginpassword_error_message' => 'პაროლი სავალდებულოა',
 ];

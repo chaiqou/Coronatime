@@ -38,7 +38,18 @@ return [
 	'uppercase_reset_password' => 'RESET PASSWORD',
 	'password_confirmation'    => 'Password Confirmation',
 
-	'confirmation_email' => 'We have sent you a confirmation email',
-	'updated_password'   => 'Your password has been updeted successfully',
-	'sign_in'            => 'SIGN IN',
+	'confirmation_email'        => 'We have sent you a confirmation email',
+	'updated_password'          => 'Your password has been updeted successfully',
+	'your_account_is_confirmed' => 'Your account is confirmed, you can sign in',
+	'sign_in'                   => 'SIGN IN',
+
+	'invalid_password' => 'Your provided credentials could not be verified',
+
+	'username_placeholder'              => 'Enter unique username or email',
+	'password_placeholder'              => 'Fill in password',
+	'repeat_password_placeholder'       => 'Repeat password',
+	'email_placeholder'                 => 'Enter your email',
+	'enter_unique_username_placeholder' => 'Enter unique username',
+
+	'password_error_message'      => 'Password is incorrect or user does not exists',
 ];

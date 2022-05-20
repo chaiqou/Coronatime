@@ -37,14 +37,14 @@ class AuthController extends Controller
 				if (Auth::user()->is_verified == 1)
 				{
 					session()->regenerate();
-					return redirect()->route('dashboard');
+					return redirect()->route('dashboard.worldwide');
 				}
 			}
 		}
 
 		// if validate failed
 		throw ValidationException::withMessages([
-			'password' => 'Your provided credentials could not be verified',
+			'password' => __('message.password_error_message'),
 		]);
 	}
 

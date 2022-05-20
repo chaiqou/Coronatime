@@ -21,12 +21,13 @@
                             @csrf
 
                             <div>
-                                <label for="" class="block text-sm font-medium text-gray-700">
+                                <label for="username" class="block text-sm font-medium text-gray-700">
                                     <strong>{{ __('message.username') }}</strong>
                                 </label>
                                 <div class="mt-1">
-                                    <input id="username" name="username" type="text" placeholder="satargmni"
-                                        autocomplete="username" value="{{ old('username') }}"
+                                    <input id="username" name="username" type="text"
+                                        placeholder="{{ __('message.username_placeholder') }}" autocomplete="username"
+                                        value="{{ old('username') }}"
                                         class="appearance-none block w-full p-4 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
 
                                     @error('username')
@@ -35,16 +36,18 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="" class="block text-sm font-medium text-gray-700">
+                                <label for="password" class="block text-sm font-medium text-gray-700">
                                     <strong>{{ __('message.password') }}</strong>
                                 </label>
                                 <div class="mt-1">
-                                    <input id="password" name="password" type="password" placeholder="satargmni"
-                                        autocomplete="password" value="{{ old('password') }}"
+                                    <input id="password" name="password" type="password"
+                                        placeholder="{{ __('message.password_placeholder') }}" autocomplete="password"
+                                        value="{{ old('password') }}"
                                         class="appearance-none block w-full p-4 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
 
                                     @error('password')
-                                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                                        <p class="text-red-500 text-xs mt-2">
+                                            {{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
