@@ -31,7 +31,7 @@ class AuthController extends Controller
 
 		{
 		// attempt login user if all provided attributes are true
-			if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']]))
+			if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']], $request->remember))
 			{
 				// if user is_verified column === 1 then log in user
 				if (Auth::user()->is_verified == 1)
