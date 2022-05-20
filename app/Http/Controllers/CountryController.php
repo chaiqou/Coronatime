@@ -10,35 +10,33 @@ class CountryController extends Controller
 {
 	public function worldwide(): View
 	{
-		$country = new Country();
+		$countries = Country::all();
 
-		$state = [
-			'confirmed' => $country->sum('confirmed'),
-			'deaths'    => $country->sum('deaths'),
-			'recovered' => $country->sum('recovered'),
+		$covidStatisticSum = [
+			'confirmed' => $countries->sum('confirmed'),
+			'deaths'    => $countries->sum('deaths'),
+			'recovered' => $countries->sum('recovered'),
 		];
 
-		return view('dashboard.main', ['state' => $state]);
+		return view('dashboard.main', ['covidStatisticSum' => $covidStatisticSum]);
 	}
 
 	public function byCountry(): View
 	{
-		$countries = Country::latest();
+		$countries = Country::all();
 
 		if (request('search'))
 		{
 			$countries->where('name', 'like', '%' . request('search') . '%');
 		}
 
-		$country = new Country();
-
-		$worldwide = [
-			'confirmed' => $country->sum('confirmed'),
-			'deaths'    => $country->sum('deaths'),
-			'recovered' => $country->sum('recovered'),
+		$covidStatisticSum = [
+			'confirmed' => $countries->sum('confirmed'),
+			'deaths'    => $countries->sum('deaths'),
+			'recovered' => $countries->sum('recovered'),
 		];
 
-		// sortp depent on condition
+		/* Sort logic **/
 
 		if (Request::get('sort') == 'name_asc')
 		{
@@ -73,6 +71,6 @@ class CountryController extends Controller
 			$countries = Country::orderBy('recovered', 'desc');
 		}
 
-		return view('dashboard.by-country', ['worldwide' => $worldwide, 'countries'  => $countries->get()]);
+		return view('dashboard.by-country', ['covidStatisticSum' => $covidStatisticSum, 'countries'  => $countries->get()]);
 	}
 }

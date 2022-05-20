@@ -68,7 +68,8 @@
                                         {{ __('message.new_cases') }}
 
                                     </dt>
-                                    <dd class="mt-1 text-3xl font-extrabold text-[#2029F3]">{{ $state['confirmed'] }}
+                                    <dd class="mt-1 text-3xl font-extrabold text-[#2029F3]">
+                                        {{ $covidStatisticSum['confirmed'] }}
                                     </dd>
                                 </div>
 
@@ -79,7 +80,7 @@
                                         {{ __('message.recovered') }}
                                     </dt>
                                     <dd class="mt-1 text-3xl  font-extrabold text-[#0FBA68]">
-                                        {{ $state['recovered'] }}
+                                        {{ $covidStatisticSum['recovered'] }}
                                     </dd>
                                 </div>
 
@@ -88,7 +89,8 @@
                                     <img class="mb-4" src="{{ asset('images/vector2.png') }}" alt="">
                                     <dt class="text-sm font-medium text-gray-900 font-extrabold ">
                                         {{ __('message.deaths') }}</dt>
-                                    <dd class="mt-1 text-3xl  font-extrabold text-[#EAD621]">{{ $state['deaths'] }}
+                                    <dd class="mt-1 text-3xl  font-extrabold text-[#EAD621]">
+                                        {{ $covidStatisticSum['deaths'] }}
                                     </dd>
                                 </div>
                             </dl>

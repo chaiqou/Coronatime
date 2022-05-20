@@ -140,12 +140,12 @@
                                         class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                         {{ __('message.worldwide') }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        {{ $worldwide['confirmed'] }}
+                                        {{ $covidStatisticSum['confirmed'] }}
                                     </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        {{ $worldwide['deaths'] }}</td>
+                                        {{ $covidStatisticSum['deaths'] }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                        {{ $worldwide['recovered'] }}
+                                        {{ $covidStatisticSum['recovered'] }}
                                     </td>
 
                                 </tr>
