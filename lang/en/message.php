@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'welcome'     => 'Welcome to our application!',
+	'welcome'     => 'Worldwide Statistics',
 	'worldwide'   => 'Worldwide',
 	'by_country'  => 'By Country',
 	'new_cases'   => 'New Cases',
