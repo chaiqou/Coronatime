@@ -6,7 +6,7 @@
 
     <x-dashboard.country-search />
 
-    <x-dashboard.country-table />
+    <x-dashboard.country-table :countries="$countries" :covidStatisticSum="$covidStatisticSum" />
 
 
 

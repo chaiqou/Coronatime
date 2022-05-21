@@ -8,7 +8,7 @@
 
             </span>
 
-            <a class="px-2 py-1"
+            <a class="px-2 py-1 md:hidden"
                 href="{{ Config::get('app.locale') === 'en' ? route('locale.setting', 'ka') : route('locale.setting', 'en') }}">
                 {{ Config::get('app.locale') === 'ka' ? 'ქართული' : 'English' }}
             </a>
