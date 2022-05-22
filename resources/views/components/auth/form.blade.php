@@ -1,9 +1,7 @@
 <div class="mt-6">
     <div class="mt-9">
-        <form action="/login" method="POST" class="space-y-7">
+        <form action="/login" method="POST" class="space-y-9 md:space-y-7">
             @csrf
-
-
 
             <div>
                 <label for="username" class="block text-sm font-medium text-gray-700">
@@ -46,7 +44,7 @@
                 <div class="flex items-center">
                     <input id="remember" name="remember" type="checkbox"
                         class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded" />
-                    <label for="remember" class="ml-2 block text-sm accent-green-700 text-gray-900">
+                    <label for="remember" class="ml-2 font-bold block text-sm accent-green-700 text-gray-900">
                         {{ __('message.remember_me') }}
                     </label>
                 </div>

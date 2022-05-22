@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'required'       => ':attribute ველი აუცილებელია',
+	'required'       => ':attribute აუცილებელია',
 	'unique'         => ':attribute უკვე დაკავებულია',
 	'confirmed'      => ':attribute უნდა ემთხვეოდეს ერთმანეთს',
 	'min'            => [
@@ -10,7 +10,7 @@ return [
 
 	'attributes' => [
 		'username' => 'მომხმარებლის სახელი',
-		'password' => 'პაროლის',
+		'password' => 'პაროლი',
 		'email'    => 'ემეილი',
 	],
 ];
