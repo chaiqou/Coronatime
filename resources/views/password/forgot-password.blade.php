@@ -28,7 +28,7 @@
                         @enderror
                     </div>
                 </div>
-                <div>
+                <div class="">
                     <x-button>{{ __('message.uppercase_reset_password') }}</x-button>
                 </div>
             </form>
