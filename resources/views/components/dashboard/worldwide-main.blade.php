@@ -10,9 +10,9 @@
                 <div class="rounded-lg h-96">
                     <div>
 
-                        <dl class="mt-5  grid grid-cols-1 gap-5 sm:grid-cols-3">
+                        <dl class="mt-5  grid grid-cols-1 gap-5 md:grid-cols-3 grid-cols-4 ">
                             <div
-                                class=" px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-indigo-100 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+                                class=" px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-indigo-100 bg-white shadow rounded-lg overflow-hidden sm:p-6 md:col-span-1 col-span-full">
                                 <img src="{{ asset('images/vector3.png') }}" alt="">
                                 <dt class="text-sm font-medium text-gray-900 font-extrabold ">
                                     {{ __('message.new_cases') }}
@@ -23,8 +23,10 @@
                                 </dd>
                             </div>
 
+
+
                             <div
-                                class="px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-green-100 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+                                class="px-4  py-5 h-[200px] flex flex-col items-center space-y-4 bg-green-100 bg-white shadow rounded-lg overflow-hidden sm:p-6 md:col-span-1 col-start-1 col-end-3 ">
                                 <img class="mb-6" src="{{ asset('images/vector.png') }}" alt="">
                                 <dt class="text-sm font-medium text-gray-900 font-extrabold truncate">
                                     {{ __('message.recovered') }}
@@ -35,13 +37,14 @@
                             </div>
 
                             <div
-                                class="px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-yellow-100 bg-white shadow rounded-lg overflow-hidden sm:p-6">
+                                class="px-4 py-5 h-[200px] flex flex-col items-center space-y-4 bg-yellow-100 bg-white shadow rounded-lg overflow-hidden sm:p-6 md:col-span-1 col-start-3 col-end-5  ">
                                 <img class="mb-4" src="{{ asset('images/vector2.png') }}" alt="">
                                 <dt class="text-sm font-medium text-gray-900 font-extrabold ">
                                     {{ __('message.deaths') }}</dt>
                                 <dd class="mt-1 text-3xl  font-extrabold text-[#EAD621]">
                                     {{ $covidStatisticSum['deaths'] }}
                                 </dd>
+
                             </div>
                         </dl>
                     </div>

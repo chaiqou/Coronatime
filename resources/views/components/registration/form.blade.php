@@ -11,7 +11,7 @@
                     <input id="username" name="username" type="text"
                         placeholder="{{ __('message.enter_unique_username_placeholder') }}" autocomplete="username"
                         value="{{ old('username') }}"
-                        class="@if ($errors->has('username')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        class="@if ($errors->has('username')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     @error('username')
                         <p class="flex items-center font-bold text-red-500 text-xs mt-2">
                             <x-svg.error-svg />
@@ -27,7 +27,7 @@
                 <div class="mt-1">
                     <input id="email" name="email" type="email" placeholder="{{ __('message.email_placeholder') }}"
                         autocomplete="email" value="{{ old('email') }}"
-                        class="@if ($errors->has('email')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        class="@if ($errors->has('email')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     @error('email')
                         <p class="flex items-center font-bold text-red-500 text-xs mt-2">
                             <x-svg.error-svg />
@@ -44,7 +44,7 @@
                     <input id="password" name="password" type="password"
                         placeholder="{{ __('message.password_placeholder') }}" autocomplete="password"
                         value="{{ old('password') }}"
-                        class="@if ($errors->has('password')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        class="@if ($errors->has('password')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     @error('password')
                         <p class="flex items-center font-bold text-red-500 text-xs mt-2">
                             <x-svg.error-svg />
@@ -61,7 +61,7 @@
                     <input id="password_confirmation" name="password_confirmation" type="password"
                         placeholder="{{ __('message.repeat_password_placeholder') }}"
                         autocomplete="password_confirmation" value="{{ old('password_confirmation') }}"
-                        class="@if ($errors->has('password')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        class="@if ($errors->has('password')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     @error('password')
                         <p class="flex items-center font-bold text-red-500 text-xs mt-2">
                             <x-svg.error-svg />

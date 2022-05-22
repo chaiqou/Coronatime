@@ -22,6 +22,7 @@
                 </div>
             </div>
 
+
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700">
                     <strong>{{ __('message.password') }}</strong>
@@ -30,16 +31,18 @@
                     <input id="password" name="password" type="password"
                         placeholder="{{ __('message.password_placeholder') }}" autocomplete="password"
                         value="{{ old('password') }}"
-                        class="@if ($errors->has('password')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:border focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        class="@if ($errors->has('password')) border border-red-500 @else border border-gray-300 @endif appearance-none block w-full p-4  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
 
                     @error('password')
-                        <p class="flex items-center text-red-500 font-bold text-xs mt-2">
+                        <p class="flex items-center font-bold text-red-500 text-xs mt-2">
                             <x-svg.error-svg />
                             {{ $message }}
                         </p>
                     @enderror
                 </div>
             </div>
+
+
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <input id="remember" name="remember" type="checkbox"

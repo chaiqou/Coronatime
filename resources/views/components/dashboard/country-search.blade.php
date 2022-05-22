@@ -1,5 +1,5 @@
  <form action="" method="GET">
-     <div class="flex space-x-4 w-full md:space-x-8 md:max-w-7xl mx-auto">
+     <div class="flex space-x-4 w-full mb-4 md:space-x-8 md:max-w-7xl mx-auto">
 
          <label for="search" class="sr-only">Search</label>
 
@@ -9,7 +9,7 @@
                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
              </svg>
              <input type="search" name="search" id="search" value="{{ request('search') }}"
-                 class="pr-14 pl-8 px-4 max-w-6xl mx-auto font-semibold  border-2 h-12 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                 class="pr-14 pl-8 px-4 max-w-6xl mx-auto font-semibold  md:border-2 h-12 shadow-sm sm:text-sm border-gray-300 rounded-md"
                  placeholder="{{ __('message.search_by_country') }}">
          </div>
          </input>

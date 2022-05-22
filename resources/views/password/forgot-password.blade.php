@@ -18,7 +18,7 @@
                     <div>
                         <label for="email"><strong>{{ __('message.email') }}</strong></label>
                         <input id="email" name="email" type="email" autocomplete="email"
-                            class="@if ($errors->has('email')) border border-red-500 @else border border-gray-300 @endif appearance-none w-full p-4  rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            class="@if ($errors->has('email')) border border-red-500 @else border border-gray-300 @endif appearance-none w-full p-4  rounded-none relative block  placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="{{ __('message.email_placeholder') }}">
                         @error('email')
                             <p class="flex items-center font-bold text-red-500 text-xs mt-2">
