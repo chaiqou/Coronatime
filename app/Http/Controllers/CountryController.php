@@ -27,7 +27,8 @@ class CountryController extends Controller
 
 		if (request('search'))
 		{
-			$countries->where('name', 'like', '%' . request('search') . '%');
+			$countries->where('name', 'like', '%' . request('search') . '%')
+			->orWhere('name_geo', 'like', '%' . request('search') . '%');
 		}
 
 		$covidStatisticSum = [
