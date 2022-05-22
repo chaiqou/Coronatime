@@ -7,7 +7,7 @@
             <a href="/dashboard" class="text-md mr-4 leading-tight text-gray-900" aria-current="page">
                 {{ __('message.worldwide') }}
             </a>
-            <a href="/by-country" class="text-md font-bold leading-tight text-gray-900 border-b-4  border-b-black"
+            <a href="/by-country" class="text-md font-bold leading-tight text-gray-900 border-b-4 p-2 border-b-black"
                 aria-current="page">
                 {{ __('message.by_country') }}
             </a>
