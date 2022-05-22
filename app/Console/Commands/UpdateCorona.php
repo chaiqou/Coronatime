@@ -49,7 +49,7 @@ class UpdateCorona extends Command
 			];
 
 			Country::create([
-				'name'        => $nameCountry['en'],
+				'name'        => $nameCountry,
 				'code'        => $countryFullData['code'],
 				'confirmed'   => $countryFullData['confirmed'],
 				'recovered'   => $countryFullData['recovered'],

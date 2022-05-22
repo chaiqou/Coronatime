@@ -16,7 +16,7 @@ class MailController extends Controller
 		return view('mail.confirmation');
 	}
 
-	public static function sendSignupEmail($email, $verification_code)
+	public static function sendSignupEmail($username, $email, $verification_code)
 	{
 		$data = [
 			'email'             => $email,
@@ -26,7 +26,7 @@ class MailController extends Controller
 		Mail::to($email)->send(new SignupEmail($data));
 	}
 
-	public function verification(): View
+	public function verification()
 	{
 		$verification_code = Request::get('code');
 		$user = User::where(['verification_code' => $verification_code])->first();
@@ -37,9 +37,11 @@ class MailController extends Controller
 		{
 			$user->is_verified = 1;
 			$user->save();
-			return view('mail.confirmed');
+			return redirect()->route('mail.confirmation');
 		}
-
-		return redirect()->route('/');
+		else
+		{
+			return redirect()->route('user.registration.form');
+		}
 	}
 }

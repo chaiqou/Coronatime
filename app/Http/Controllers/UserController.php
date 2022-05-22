@@ -22,8 +22,8 @@ class UserController extends Controller
 		$validated = $request->validated();
 
 		$user = User::create([
-			'username'          => $request->username,
 			'email'             => $request->email,
+			'username'          => $request->username,
 			'password'          => bcrypt($request->password),
 			'verification_code' => sha1(time()),
 		]);
@@ -50,12 +50,13 @@ class UserController extends Controller
 				];
 
 				Country::create([
-					'name'        => $nameCountry['en'],
-					'code'        => $countryFullData['code'],
-					'confirmed'   => $countryFullData['confirmed'],
-					'recovered'   => $countryFullData['recovered'],
-					'critical'    => $countryFullData['critical'],
-					'deaths'      => $countryFullData['deaths'],
+					'name'             => $nameCountry['en'],
+					'name_geo'         => $nameCountry['ka'],
+					'code'             => $countryFullData['code'],
+					'confirmed'        => $countryFullData['confirmed'],
+					'recovered'        => $countryFullData['recovered'],
+					'critical'         => $countryFullData['critical'],
+					'deaths'           => $countryFullData['deaths'],
 				]);
 			}
 		}

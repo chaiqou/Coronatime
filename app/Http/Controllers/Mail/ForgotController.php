@@ -35,7 +35,7 @@ class ForgotController extends Controller
 		$body = 'Check your password reset link';
 
 		Mail::send('mail/email-forgot', ['action_link' => $action_link, 'body' => $body], function ($message) use ($request) {
-			$message->from('coronatime@gmail.com', 'Coronatime');
+			$message->from('nikolozlomtadze@gmail.com', 'Coronatime');
 			$message->to($request->email, 'Coronatime')
 					->subject('Password reset');
 		});
