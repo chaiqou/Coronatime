@@ -2,7 +2,7 @@
     <nav class="max-w-7xl mx-auto bg-white p-8 md:flex md:items-center md:justify-between ">
         <div class="flex justify-between items-center">
             <span>
-                <a href="/dashboard">
+                <a href="{{ $path }}">
                     <img class="h-10 w-auto inline" src="{{ asset('images/logo.png') }}" alt="Workflow">
                 </a>
 

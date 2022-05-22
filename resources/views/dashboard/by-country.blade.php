@@ -1,6 +1,6 @@
 <x-layout>
 
-    <x-dashboard.navbar />
+    <x-dashboard.navbar path='/by-country' />
 
     <x-dashboard.country-header />
 

@@ -1,6 +1,6 @@
 <x-layout>
 
-    <x-dashboard.navbar />
+    <x-dashboard.navbar path='/dashboard' />
 
     <x-dashboard.worldwide-main :covidStatisticSum="$covidStatisticSum" />
 
