@@ -12,9 +12,9 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-	public function index(): View
+	public function index(Request $request): View
 	{
-		return view('login.main');
+		return view('login.main', ['request' => $request]);
 	}
 
 	public function login(LoginRequest $request): RedirectResponse

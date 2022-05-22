@@ -8,7 +8,7 @@
                 <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">{{ __('message.reset_password') }}
                 </h2>
             </div>
-            <x-password.reset-form />
+            <x-password.reset-form :token='$token' :email='$email' />
         </div>
     </div>
 </x-layout>
