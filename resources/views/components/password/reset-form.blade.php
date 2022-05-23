@@ -4,7 +4,7 @@
 
     <input type="hidden" id="email" name="email" autofocus value="{{ $email }}"
         class="appearance-none w-full p-4  rounded-lg relative block border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
-    <div class="rounded-md shadow-sm space-y-0">
+    <div class="rounded-md shadow-sm ">
         <label for="password"><strong>{{ __('message.new_password') }}</strong></label>
         <input type="password" id="password" name="password" placeholder="{{ __('message.fill_password') }}"
             class="@if ($errors->has('password')) border border-red-500 @else border border-gray-300 @endif appearance-none w-full p-4  rounded-lg relative block  placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">

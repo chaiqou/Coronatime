@@ -70,8 +70,6 @@
                     @enderror
                 </div>
             </div>
-
-
             <div class="flex flex-col items-center">
                 <x-button>{{ __('message.uppercase_sign_up') }}</x-button>
                 <div class="flex items-center space-x-2">

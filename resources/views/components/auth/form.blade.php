@@ -46,7 +46,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <input id="remember" name="remember" type="checkbox"
-                        class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded" />
+                        class="accent-green-600  h-4 w-4 border-gray-300 rounded-lg" />
                     <label for="remember" class="ml-2 font-bold block text-sm accent-green-700 text-gray-900">
                         {{ __('message.remember_me') }}
                     </label>

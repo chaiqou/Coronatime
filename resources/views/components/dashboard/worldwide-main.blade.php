@@ -2,15 +2,13 @@
 
 <div class="py-10">
     <x-dashboard.worldwide-header />
-
     <main>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
             <div class="px-4 py-8 sm:px-0">
                 <div class="rounded-lg h-96">
                     <div>
-
                         <dl class="mt-5  grid grid-cols-1 gap-5 md:grid-cols-3 grid-cols-4 ">
+
                             <div
                                 class=" px-4 py-5 h-[200px] flex flex-col items-center space-y-2 bg-indigo-100 bg-white shadow rounded-lg overflow-hidden sm:p-6 md:col-span-1 col-span-full">
                                 <x-svg.blue-vector />
@@ -21,6 +19,7 @@
                                     {{ $covidStatisticSum['confirmed'] }}
                                 </dd>
                             </div>
+
                             <div
                                 class="px-4  py-5 h-[200px] flex flex-col items-center space-y-4 bg-green-100 bg-white shadow rounded-lg overflow-hidden sm:p-6 md:col-span-1 col-start-1 col-end-3 ">
                                 <x-svg.green-vector />
