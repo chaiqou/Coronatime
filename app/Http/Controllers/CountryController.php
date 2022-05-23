@@ -13,9 +13,9 @@ class CountryController extends Controller
 		$countries = Country::all();
 
 		$covidStatisticSum = [
-			'confirmed' => $countries->sum('confirmed'),
-			'deaths'    => $countries->sum('deaths'),
-			'recovered' => $countries->sum('recovered'),
+			'confirmed' => number_format($countries->sum('confirmed')),
+			'deaths'    => number_format($countries->sum('deaths')),
+			'recovered' => number_format($countries->sum('recovered')),
 		];
 
 		return view('dashboard.main', ['covidStatisticSum' => $covidStatisticSum]);

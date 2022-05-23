@@ -1,6 +1,6 @@
 <div class="mt-6">
     <div class="mt-9">
-        <form action="/register" method="POST" class="space-y-9 md:space-y-7">
+        <form action="/register" method="POST" class="space-y-8 md:space-y-7">
             @csrf
 
             <div>

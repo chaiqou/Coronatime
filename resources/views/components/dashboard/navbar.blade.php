@@ -17,7 +17,6 @@
 
         </div>
 
-
         <ul
             class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full
             left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0">
@@ -26,15 +25,12 @@
                 {{ Config::get('app.locale') === 'en' ? route('locale.setting', 'ka') : route('locale.setting', 'en') }}"
                     class="text-lg hover:text-green-600 flex items-center">
                     {{ Config::get('app.locale') === 'ka' ? 'ქართული' : 'English' }}
-                    <svg class="ml-2" width="12" height="7" viewBox="0 0 12 7" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.19998 1.3999L5.99998 6.1999L10.8 1.3999" stroke="#010414" stroke-linecap="square" />
-                    </svg>
+                    <x-svg.arrow-svg />
                 </a>
             </li>
             <li class="mx-4  my-6 md:my-0">
                 <a href=" {{ route('locale.setting', 'en') }}"
-                    class="text-lg hover:text-green-600">{{ auth()->user()->username }}.</a>
+                    class="text-lg font-extrabold hover:text-green-600">{{ auth()->user()->username }}.</a>
             </li>
             <li class="mx-4  my-6 md:my-0">
                 <a class=" text-lg hover:text-green-600">
