@@ -19,7 +19,7 @@
         <tr>
             <td
                 class="whitespace-nowrap pl-4 @if (request('search')) py-8 @endif mt-3 flex text-sm font-medium text-gray-900 sm:pl-6">
-                {{ app()->getLocale() == 'en' ? $country->name : $country->name_geo }}
+                {!! app()->getLocale() == 'en' ? str_replace(' ', '</br>', $country->name) : str_replace(' ', '</br>', $country->name_geo) !!}
             </td>
             <td class="whitespace-nowrap px-3 items-center py-4 text-sm text-gray-500">
                 {{ $country->confirmed }}

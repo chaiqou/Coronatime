@@ -1,5 +1,5 @@
-<thead class="bg-[#F6F6F7] relative">
-    <tr class="w-12">
+<thead class="bg-[#F6F6F7] ">
+    <tr>
         <x-dashboard.table-column>
             {{ __('message.location') }}
             <div class="items-center inline-block">
@@ -14,7 +14,10 @@
         </x-dashboard.table-column>
 
         <x-dashboard.table-column>
+
             {{ __('message.new_cases') }}
+
+
             <div class="items-center inline-block">
                 <a class="cursor-pointer" href="{{ URL::current() . '?sort=confirmed_desc' }}">
                     <x-svg.table-arrow-up
