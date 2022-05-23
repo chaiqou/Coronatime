@@ -53,4 +53,7 @@ return [
 	'enter_unique_username_placeholder' => 'Enter unique username',
 
 	'password_error_message'      => 'Password is incorrect or user does not exists',
+
+	'georgian' => 'Georgian',
+	'english'  => 'English',
 ];
