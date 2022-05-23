@@ -1,5 +1,5 @@
 <x-layout>
-    <nav class="max-w-7xl mx-auto bg-white p-8 md:flex md:items-center md:justify-between ">
+    <nav class="max-w-7xl mx-auto bg-white p-8 md:flex md:items-center md:justify-between space-y-4">
         <div class="flex justify-between items-center">
             <span>
                 <a href="{{ $path }}">
@@ -7,8 +7,8 @@
                 </a>
 
             </span>
-            {{-- aqedan --}}
-            <div class="mx-4 my-4 md:my-0 mb-4 md:hidden" x-data="{ show: false }" @click.away="show = false">
+
+            <div class="ml-6 my-4 md:my-0 mb-4 md:hidden" x-data="{ show: false }" @click.away="show = false">
                 <x-dashboard.language-dropdown />
             </div>
             <x-dashboard.dropdown />
