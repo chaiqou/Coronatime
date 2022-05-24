@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Country;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Mail\MailController;
@@ -12,11 +11,6 @@ use App\Http\Requests\RegistrationRequest;
 
 class UserController extends Controller
 {
-	public function index(): View
-	{
-		return view('register.main');
-	}
-
 	public function registration(RegistrationRequest $request): RedirectResponse
 	{
 		$validated = $request->validated();

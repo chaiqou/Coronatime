@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="block mx-8 my-5 md:my-0 mb-4 md:hidden">
+    <div class="inline-block mx-8 my-5 md:my-0 mb-4 md:hidden">
         <button id="menu-btn" class="md:hidden cursor-pointer justify-between items-center">
             <x-svg.dropdown-svg />
         </button>

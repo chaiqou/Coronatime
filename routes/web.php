@@ -22,7 +22,7 @@ use App\Http\Controllers\Session\LanguageController;
 
 Route::group(['middleware' => 'check.locale'], function () {
 	// Registration
-	Route::get('/register', [UserController::class, 'index'])->name('user.registration.form');
+	Route::view('/register', 'register.main')->name('user.registration.form');
 	Route::post('/register', [UserController::class, 'registration'])->name('user.registration');
 
 	// Log In
@@ -33,7 +33,7 @@ Route::group(['middleware' => 'check.locale'], function () {
 	Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
 
 	// Mail confirmation and verify pages
-	Route::get('/mail-confirmation', [MailController::class, 'index'])->name('mail.confirmation');
+	Route::view('/mail-confirmation', 'mail.confirmation')->name('mail.confirmation');
 	Route::get('/mail-verify', [MailController::class, 'verification'])->name('mail.verification');
 
 	// Dashboard
@@ -41,7 +41,7 @@ Route::group(['middleware' => 'check.locale'], function () {
 	Route::get('/by-country', [CountryController::class, 'byCountry'])->name('dashboard.country')->middleware('auth');
 
 	// Forgot Password
-	Route::get('/forgot-password', [ForgotController::class, 'index'])->name('forgot.password.form');
+	Route::view('/forgot-password', 'password.forgot-password')->name('forgot.password.form');
 	Route::post('/forgot-password', [ForgotController::class, 'forgotPasswordEmail'])->name('forgot.password.link');
 
 	// reset password

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Mail;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
@@ -12,11 +11,6 @@ use App\Http\Requests\ForgotPasswordRequest;
 
 class ForgotController extends Controller
 {
-	public function index(): View
-	{
-		return view('password.forgot-password');
-	}
-
 	public function forgotPasswordEmail(ForgotPasswordRequest $request): RedirectResponse
 	{
 		$validated = $request->validated();

@@ -4,18 +4,12 @@ namespace App\Http\Controllers\Mail;
 
 use App\Models\User;
 use App\Mail\SignupEmail;
-use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 
 class MailController extends Controller
 {
-	public function index(): View
-	{
-		return view('mail.confirmation');
-	}
-
 	public static function sendSignupEmail($username, $email, $verification_code)
 	{
 		$data = [
