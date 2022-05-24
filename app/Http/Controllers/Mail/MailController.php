@@ -31,7 +31,7 @@ class MailController extends Controller
 		{
 			$user->is_verified = 1;
 			$user->save();
-			return redirect()->route('mail.confirmation');
+			return redirect()->route('mail.confirmed');
 		}
 		else
 		{
