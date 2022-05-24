@@ -55,6 +55,7 @@ return [
 	'email_error_message'         => 'ემეალი სავალდებულოა, უნდა იყოს უნიკალური',
 	'password_error_message'      => 'პაროლი არასწორია ან ასეთი მომხმარებელი არ არსებობს',
 	'loginpassword_error_message' => 'პაროლი სავალდებულოა',
+	'new_password'                => 'ახალი პაროლი',
 
 	'georgian' => 'ქართული',
 	'english'  => 'ინგლისური',

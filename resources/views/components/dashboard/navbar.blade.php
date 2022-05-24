@@ -8,7 +8,7 @@
 
             </span>
 
-            <div class="ml-6 my-4 md:my-0 mb-4 md:hidden" x-data="{ show: false }" @click.away="show = false">
+            <div class="ml-6 my-4 md:my-0 mb-4 md:hidden " x-data="{ show: false }" @click.away="show = false">
                 <x-dashboard.language-dropdown />
             </div>
             <x-dashboard.dropdown />
@@ -26,10 +26,10 @@
 
             <li class="mx-4  my-6 md:my-0">
                 <a href=" {{ route('locale.setting', 'en') }}"
-                    class="text-lg font-extrabold hover:text-green-600">{{ auth()->user()->username }}.</a>
+                    class="text-lg font-extrabold ">{{ auth()->user()->username }}.</a>
             </li>
             <li class="mx-4  my-6 md:my-0">
-                <a class=" text-lg hover:text-green-600">
+                <a class=" text-lg ">
                     <form action="/logout" method="POST">
                         @csrf
                         <button type="submit">{{ __('message.log_out') }}</button>
