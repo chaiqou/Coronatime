@@ -67,6 +67,6 @@ php artisan serve
 
 ## Resources
 
--   [Figma](https://www.figma.com/file/IIJOKK5esgM8uK8pM3D59J/Movie-Quotes?node-id=0%3A1)
+-   [Figma](https://www.figma.com/file/O9A950iYrHgZHtBuCtNSY8/Coronatime?node-id=137%3A84)
 -   [DrawSQL](https://drawsql.app/redberry-21/diagrams/corona)
-    ![Screenshot from 2022-05-10 17-49-36](https://i.ibb.co/W3MRwsk/Screenshot-from-2022-05-24-23-48-43.png)
+-   ![Screenshot from 2022-05-10 17-49-36](https://i.ibb.co/W3MRwsk/Screenshot-from-2022-05-24-23-48-43.png)
