@@ -21,7 +21,7 @@
                 {{ __('click this button to verify your email') }}
             </p>
             <a
-                href="https://coronatime.nikoloz.redberryinternship.ge//mail-verify?code={{ $email_data['verification_code'] }}">
+                href="https://coronatime.nikoloz.redberryinternship.ge/mail-verify?code={{ $email_data['verification_code'] }}">
                 <button
                     style="background-color: #0FBA68; height: 56px; width: 392px; margin-top:30px; padding: 1rem; color: white; font-size: 1.2rem; width: 400px; font-weight: 900; border:#0FBA68;  border-radius: 10px;">
                     {{ __('VERIFY EMAIL ') }}
