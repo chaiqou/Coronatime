@@ -5,12 +5,11 @@
             {{ __('message.location') }}
 
             <div class="items-center md:inline-block ">
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=name_asc' }}">
-                    <x-svg.table-arrow-up request="{{ Request::get('sort') == 'name_asc' ? 'black' : '#BFC0C4' }}" />
+                <a class="cursor-pointer" href="{{ URL::current() . '?sort=asc' }}">
+                    <x-svg.table-arrow-up request="{{ Request::get('sort') == 'asc' ? 'black' : '#BFC0C4' }}" />
                 </a>
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=name_desc' }}">
-                    <x-svg.table-arrow-down
-                        request="{{ Request::get('sort') == 'name_desc' ? 'black' : '#BFC0C4' }}" />
+                <a class="cursor-pointer" href="{{ URL::current() . '?sort=desc' }}">
+                    <x-svg.table-arrow-down request="{{ Request::get('sort') == 'desc' ? 'black' : '#BFC0C4' }}" />
                 </a>
             </div>
 

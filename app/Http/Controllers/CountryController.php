@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Request as SortRequest;
+use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
@@ -19,55 +20,47 @@ class CountryController extends Controller
 		return view('dashboard.main', ['covidStatisticSum' => $covidStatisticSum]);
 	}
 
-	public function byCountry(): View
+	public function byCountry(Request $request): View
 	{
 		$countries = Country::latest();
 
-		if (request('search'))
+		if ($request->input('search'))
 		{
-			$countries->where('name', 'like', '%' . request('search') . '%')
-			->orWhere('name_geo', 'like', '%' . request('search') . '%');
+			$countries->where('name', 'like', '%' . $request->input('search') . '%')
+			->orWhere('name_geo', 'like', '%' . $request->input('search') . '%');
 		}
 
 		$covidStatisticSum = [
-			'confirmed' => $countries->sum('confirmed'),
-			'deaths'    => $countries->sum('deaths'),
-			'recovered' => $countries->sum('recovered'),
+			'confirmed' => Country::sum('confirmed'),
+			'deaths'    => Country::sum('deaths'),
+			'recovered' => Country::sum('recovered'),
 		];
 
-		/* Sort logic **/
-
-		if (Request::get('sort') == 'name_asc')
-		{
-			$countries = Country::orderBy('name', 'asc');
-		}
-		elseif (Request::get('sort') == 'name_desc')
-		{
-			$countries = Country::orderBy('name', 'desc');
-		}
-		elseif (Request::get('sort') == 'confirmed_asc')
-		{
-			$countries = Country::orderBy('confirmed', 'asc');
-		}
-		elseif (Request::get('sort') == 'confirmed_desc')
-		{
-			$countries = Country::orderBy('confirmed', 'desc');
-		}
-		elseif (Request::get('sort') == 'deaths_asc')
-		{
-			$countries = Country::orderBy('deaths', 'asc');
-		}
-		elseif (Request::get('sort') == 'deaths_desc')
-		{
-			$countries = Country::orderBy('deaths', 'desc');
-		}
-		elseif (Request::get('sort') == 'recovered_asc')
-		{
-			$countries = Country::orderBy('recovered', 'asc');
-		}
-		elseif (Request::get('sort') == 'recovered_desc')
-		{
-			$countries = Country::orderBy('recovered', 'desc');
+		switch (SortRequest::get('sort')) {
+			case 'name_asc':
+				$countries = Country::orderBy('name', 'asc');
+				break;
+			case 'name_desc':
+				$countries = Country::orderBy('name', 'desc');
+				break;
+			case 'confirmed_asc':
+				$countries = Country::orderBy('confirmed', 'asc');
+				break;
+			case 'confirmed_desc':
+				$countries = Country::orderBy('confirmed', 'desc');
+				break;
+			case 'deaths_asc':
+				$countries = Country::orderBy('deaths', 'asc');
+				break;
+			case 'deaths_desc':
+				$countries = Country::orderBy('deaths', 'desc');
+				break;
+			case 'recovered_asc':
+				$countries = Country::orderBy('recovered', 'asc');
+				break;
+			case 'recovered_desc':
+				$countries = Country::orderBy('recovered', 'desc');
+				break;
 		}
 
 		return view('dashboard.by-country', ['covidStatisticSum' => $covidStatisticSum, 'countries'  => $countries->get()]);
