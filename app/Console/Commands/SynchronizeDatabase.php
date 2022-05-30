@@ -31,12 +31,13 @@ class SynchronizeDatabase extends Command
 			$countryFullData = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->json();
 
 			Country::create([
-				'name'        => $country['name'],
-				'code'        => $countryFullData['code'],
-				'confirmed'   => $countryFullData['confirmed'],
-				'recovered'   => $countryFullData['recovered'],
-				'critical'    => $countryFullData['critical'],
-				'deaths'      => $countryFullData['deaths'],
+				'name'             => $country['name']['en'],
+				'name_geo'         => $country['name']['ka'],
+				'code'             => $countryFullData['code'],
+				'confirmed'        => $countryFullData['confirmed'],
+				'recovered'        => $countryFullData['recovered'],
+				'critical'         => $countryFullData['critical'],
+				'deaths'           => $countryFullData['deaths'],
 			]);
 		}
 

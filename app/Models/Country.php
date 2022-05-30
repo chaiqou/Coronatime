@@ -11,5 +11,5 @@ class Country extends Model
 {
 	use HasApiTokens, HasFactory, Notifiable;
 
-	protected $guarded = [];
+	protected $guarded = ['id'];
 }

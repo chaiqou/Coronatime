@@ -20,30 +20,20 @@ class UserController extends Controller
 			'verification_code' => sha1(time()),
 		]);
 
-		/* after first registration (only for one time)
-		 * this logic fetch data for countries database
-		 */
+		/*  after first registration (only for one time)
+		  this logic fetch data for countries database  */
 
 		if (!Country::exists())
 		{
-			$countries = Http::get('https://devtest.ge/countries')->collect();
+			$countries = Http::get('https://devtest.ge/countries')->json();
 
 			foreach ($countries as $country)
 			{
-				do
-				{
-					$countryFullData = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->collect();
-				}
-				while (!$countryFullData->has('code'));
-
-				$nameCountry = [
-					'ka' => $country['name']['ka'],
-					'en' => $country['name']['en'],
-				];
+				$countryFullData = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->json();
 
 				Country::create([
-					'name'             => $nameCountry['en'],
-					'name_geo'         => $nameCountry['ka'],
+					'name'             => $country['name']['en'],
+					'name_geo'         => $country['name']['ka'],
 					'code'             => $countryFullData['code'],
 					'confirmed'        => $countryFullData['confirmed'],
 					'recovered'        => $countryFullData['recovered'],
