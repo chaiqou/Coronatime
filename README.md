@@ -65,6 +65,8 @@ php artisan serve
 
 -   lomtadzenikusha@gmail.com
 
+## Test Account
+
 ## Resources
 
 -   [Figma](https://www.figma.com/file/O9A950iYrHgZHtBuCtNSY8/Coronatime?node-id=137%3A84)
