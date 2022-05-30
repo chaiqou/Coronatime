@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Mail\MailController;
 use App\Http\Controllers\Mail\ResetController;
-use App\Http\Controllers\Mail\ForgotController;
-use App\Http\Controllers\Session\AuthController;
-use App\Http\Controllers\Session\LanguageController;
+use App\Http\Controllers\Mail\ForgetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,14 +43,14 @@ Route::group(['middleware' => 'check.locale'], function () {
 
 	// Forgot Password
 	Route::view('/forgot-password', 'password.forgot-password')->name('forgot.password.form');
-	Route::post('/forgot-password', [ForgotController::class, 'forgotPasswordEmail'])->name('forgot.password.link');
+	Route::post('/forgot-password', [ForgetPasswordController::class, 'forgotPasswordEmail'])->name('forgot.password.link');
 
 	// reset password
 	Route::get('/reset-password/{token}', [ResetController::class, 'index'])->name('reset.password.form');
 	Route::post('/reset-password', [ResetController::class, 'resetPassword'])->name('reset.password');
 
 	// Updated password
-	Route::get('/updated-password', [ResetController::class, 'updatedPassword'])->name('updated.password');
+	Route::view('/updated-password', 'password.updated-password')->name('updated.password');
 });
 
 	// language switcher

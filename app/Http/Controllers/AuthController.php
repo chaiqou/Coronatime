@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Session;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Contracts\View\View;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;

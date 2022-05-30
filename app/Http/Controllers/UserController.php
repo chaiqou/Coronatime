@@ -13,8 +13,6 @@ class UserController extends Controller
 {
 	public function registration(RegistrationRequest $request): RedirectResponse
 	{
-		$validated = $request->validated();
-
 		$user = User::create([
 			'email'             => $request->email,
 			'username'          => $request->username,
