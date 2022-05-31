@@ -24,10 +24,10 @@ class CountryController extends Controller
 	{
 		$countries = Country::latest();
 
-		if ($request->input('search'))
+		if ($request->search)
 		{
-			$countries->where('name', 'like', '%' . $request->input('search') . '%')
-			->orWhere('name_geo', 'like', '%' . $request->input('search') . '%');
+			$countries->where('name', 'like', '%' . $request->search . '%')
+			->orWhere('name_geo', 'like', '%' . $request->search . '%');
 		}
 
 		$covidStatisticSum = [

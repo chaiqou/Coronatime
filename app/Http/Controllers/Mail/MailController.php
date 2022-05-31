@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Request;
 
 class MailController extends Controller
 {
-	public static function sendSignupEmail(string $username, string $email, string $verification_code)
+	public static function sendSignupEmail(string $username, string $email, string $verification_code): Void
 	{
 		$data = [
 			'email'             => $email,
