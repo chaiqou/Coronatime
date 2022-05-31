@@ -4,32 +4,29 @@
 
             {{ __('message.location') }}
 
-            <div class="items-center md:inline-block ">
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=name_asc' }}">
-                    <x-svg.table-arrow-up request="{{ Request::get('sort') == 'name_asc' ? 'black' : '#BFC0C4' }}" />
+            <span class="items-center md:inline-block ">
+                <a href="{{ URL::current() . '?sort=asc&name=name' }}" class="cursor-pointer">
+                    <x-svg.table-arrow-up
+                        request="{{ Request::get('name') == 'name' && Request::get('sort') == 'asc' ? 'black' : '#BFC0C4' }}" />
                 </a>
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=name_desc' }}">
+                <a class="cursor-pointer" href="{{ URL::current() . '?sort=desc&name=name' }}">
                     <x-svg.table-arrow-down
-                        request="{{ Request::get('sort') == 'name_desc' ? 'black' : '#BFC0C4' }}" />
+                        request="{{ Request::get('name') == 'name' && Request::get('sort') == 'desc' ? 'black' : '#BFC0C4' }}" />
                 </a>
-            </div>
+            </span>
 
         </th>
 
-
-
-
         <x-dashboard.table-column>
-
             {{ __('message.new_cases') }}
             <div class="items-center md:inline-block ">
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=confirmed_desc' }}">
+                <a class="cursor-pointer" href="{{ URL::current() . '?sort=desc&name=confirmed' }}">
                     <x-svg.table-arrow-up
-                        request="{{ Request::get('sort') == 'confirmed_desc' ? 'black' : '#BFC0C4' }}" />
+                        request="{{ Request::get('name') == 'confirmed' && Request::get('sort') == 'desc' ? 'black' : '#BFC0C4' }}" />
                 </a>
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=confirmed_asc' }}">
+                <a class="cursor-pointer" href="{{ URL::current() . '?sort=asc&name=confirmed' }}">
                     <x-svg.table-arrow-down
-                        request="{{ Request::get('sort') == 'confirmed_asc' ? 'black' : '#BFC0C4' }}" />
+                        request="{{ Request::get('name') == 'confirmed' && Request::get('sort') == 'asc' ? 'black' : '#BFC0C4' }}" />
                 </a>
             </div>
         </x-dashboard.table-column>
@@ -37,13 +34,13 @@
         <x-dashboard.table-column>
             {{ __('message.deaths') }}
             <div class="items-center md:inline-block ">
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=deaths_desc' }}">
+                <a class="cursor-pointer" href="{{ URL::current() . '?sort=desc&name=deaths' }}">
                     <x-svg.table-arrow-up
-                        request="{{ Request::get('sort') == 'deaths_desc' ? 'black' : '#BFC0C4' }}" />
+                        request="{{ Request::get('name') == 'deaths' && Request::get('sort') == 'desc' ? 'black' : '#BFC0C4' }}" />
                 </a>
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=deaths_asc' }}">
+                <a class="cursor-pointer" href="{{ URL::current() . '?sort=asc&name=deaths' }}">
                     <x-svg.table-arrow-down
-                        request="{{ Request::get('sort') == 'deaths_asc' ? 'black' : '#BFC0C4' }}" />
+                        request="{{ Request::get('name') == 'deaths' && Request::get('sort') == 'asc' ? 'black' : '#BFC0C4' }}" />
                 </a>
             </div>
         </x-dashboard.table-column>
@@ -51,13 +48,13 @@
         <x-dashboard.table-column>
             {{ __('message.recovered') }}
             <div class="items-center md:inline-block  ">
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=recovered_desc' }}">
+                <a class="cursor-pointer" href="{{ URL::current() . '?sort=desc&name=recovered' }}">
                     <x-svg.table-arrow-up
-                        request="{{ Request::get('sort') == 'recovered_desc' ? 'black' : '#BFC0C4' }}" />
+                        request="{{ Request::get('name') == 'recovered' && Request::get('sort') == 'desc' ? 'black' : '#BFC0C4' }}" />
                 </a>
-                <a class="cursor-pointer" href="{{ URL::current() . '?sort=recovered_asc' }}">
+                <a class="cursor-pointer" href="{{ URL::current() . '?sort=asc&name=recovered' }}">
                     <x-svg.table-arrow-down
-                        request="{{ Request::get('sort') == 'recovered_asc' ? 'black' : '#BFC0C4' }}" />
+                        request="{{ Request::get('name') == 'recovered' && Request::get('sort') == 'asc' ? 'black' : '#BFC0C4' }}" />
                 </a>
             </div>
         </x-dashboard.table-column>
