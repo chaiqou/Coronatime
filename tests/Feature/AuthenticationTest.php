@@ -36,4 +36,12 @@ class AuthenticationTest extends TestCase
 
 		$this->assertGuest();
 	}
+
+	public function test_users_duplication()
+	{
+		$user = User::factory()->make(['username' => 'nikoloz', 'password' => '123456']);
+		$user2 = User::factory()->make(['username' => 'mariam', 'password' => '123456']);
+
+		$this->assertTrue($user != $user2);
+	}
 }
