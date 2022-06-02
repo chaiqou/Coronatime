@@ -34,7 +34,7 @@ class AuthenticationTest extends TestCase
 		$this->assertEquals(123, $user->password);
 	}
 
-	public function test_users_can_authenticate()
+	public function test_user_can_authenticate()
 	{
 		$user = User::factory()->create([
 			'username' => 'chaiqou',
@@ -60,13 +60,31 @@ class AuthenticationTest extends TestCase
 		->assertSuccessful();
 	}
 
-	public function test_unauthenticated_users_can_not_access_dashboard()
+	// public function test_redirect_to_dashboard_after_successful_login()
+	// {
+	// 	$username = 'chaiqou';
+	// 	$password = '123';
+
+	// 	$user = User::factory()->create([
+	// 		'username'    => $username,
+	// 		'password'    => bcrypt($password),
+	// 	]);
+
+	// 	$response = $this->post('/login', [
+	// 		'username'    => $username,
+	// 		'password'    => $password,
+	// 	]);
+
+	// 	$response->assertRedirect('/dashboard');
+	// }
+
+	public function test_unauthenticated_user_can_not_access_dashboard()
 	{
 		$response = $this->get(route('dashboard.worldwide'))
 		->assertStatus(500);
 	}
 
-	public function test_users_can_not_authenticate_with_invalid_password()
+	public function test_user_can_not_authenticate_with_invalid_password()
 	{
 		$user = User::factory()->create();
 
@@ -78,22 +96,54 @@ class AuthenticationTest extends TestCase
 		$this->assertGuest();
 	}
 
-	public function test_users_duplication()
+	public function test_user_can_not_authenticate_with_invalid_username()
+	{
+		$user = User::factory()->create();
+
+		$this->post(route('user.login'), [
+			'username'    => 'invalid-username',
+			'password'    => 123,
+		]);
+
+		$this->assertGuest();
+	}
+
+	public function test_if_user_do_not_provided_credentials_auth_give_us_errors()
+	{
+		$response = $this->post(route('user.login'), [
+			'username'    => '',
+			'password'    => '',
+		]);
+
+		$response->assertSessionHasErrors('username');
+		$response->assertSessionHasErrors('password');
+	}
+
+	public function test_if_user_do_not_provided_username_auth_give_us_username_error()
+	{
+		$response = $this->post(route('user.login'), [
+			'username'    => '',
+			'password'    => 123,
+		]);
+
+		$response->assertSessionHasErrors('username');
+	}
+
+	public function test_if_user_do_not_provided_password_auth_give_us_password_error()
+	{
+		$response = $this->post(route('user.login'), [
+			'username'    => 'chaiqou',
+			'password'    => '',
+		]);
+
+		$response->assertSessionHasErrors('password');
+	}
+
+	public function test_user_duplication()
 	{
 		$user = User::factory()->make(['username' => 'nikoloz', 'password' => '123456']);
 		$user2 = User::factory()->make(['username' => 'mariam', 'password' => '123456']);
 
 		$this->assertTrue($user != $user2);
-	}
-
-	public function test_can_a_user_logout()
-	{
-		$user = User::factory()->create();
-		$this->be($user);
-
-		$this->post(route('user.logout'))
-		->assertRedirect(route('user.login.form'));
-
-		$this->assertGuest();
 	}
 }

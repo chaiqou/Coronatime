@@ -54,4 +54,4 @@ Route::group(['middleware' => 'check.locale'], function () {
 });
 
 	// language switcher
-	Route::get('set-locale/{locale}', [LanguageController::class, 'switctchLanguageLocale'])->name('locale.setting')->middleware('check.locale');
+	Route::get('set-locale/{locale}', [LanguageController::class, 'switctchLanguageLocale'])->name('locale.setting');
