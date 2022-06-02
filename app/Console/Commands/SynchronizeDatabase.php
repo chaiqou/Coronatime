@@ -24,13 +24,13 @@ class SynchronizeDatabase extends Command
 
 	public function handle()
 	{
-		$countries = Http::get('https://devtest.ge/countries')->json();
+		$countries = Http::get('https://devtest.ge/countries')->collect();
 
 		foreach ($countries as $country)
 		{
-			$countryFullData = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->json();
+			$countryFullData = Http::post('https://devtest.ge/get-country-statistics', ['code' => $country['code']])->collect();
 
-			Country::create([
+			Country::updateOrCreate([
 				'name'             => $country['name']['en'],
 				'name_geo'         => $country['name']['ka'],
 				'code'             => $countryFullData['code'],
