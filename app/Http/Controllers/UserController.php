@@ -24,7 +24,5 @@ class UserController extends Controller
 
 			return redirect('/mail-confirmation');
 		}
-
-		return redirect()->back();
 	}
 }

@@ -12,6 +12,32 @@
     <include>
       <directory suffix=".php">./app</directory>
     </include>
+    <exclude>
+           <file>
+           ./app/Providers/RouteServiceProvider.php
+           </file>
+           <file>
+           ./app/Providers/BroadcastServiceProvider.php
+           </file>
+           <file>
+           ./app/Providers/AppServiceProvider.php
+           </file>
+           <file>
+           ./app/Http/Middleware/Authenticate.php
+           </file>
+           <file>
+           ./app/Http/Middleware/RedirectIfAuthenticated.php
+           </file>
+           <file>
+           ./app/Http/Middleware/TrustHosts.php
+           </file>
+           <file>
+           ./app/Console/Kernel.php
+           </file>
+           <file>
+            ./app/Exceptions/Handler.php
+           </file>
+        </exclude>
   </coverage>
   <php>
     <env name="APP_ENV" value="testing" />

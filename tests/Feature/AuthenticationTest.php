@@ -53,7 +53,9 @@ class AuthenticationTest extends TestCase
 	public function test_authenticated_users_can_access_dashboard()
 	{
 		$user = User::factory()->create();
-		$response = $this->actingAs($user)->get(route('dashboard.worldwide'))
+
+		$response = $this->actingAs($user)
+		->get(route('dashboard.worldwide'))
 		->assertSee('Worldwide Statistics')
 		->assertSuccessful();
 	}
@@ -82,5 +84,16 @@ class AuthenticationTest extends TestCase
 		$user2 = User::factory()->make(['username' => 'mariam', 'password' => '123456']);
 
 		$this->assertTrue($user != $user2);
+	}
+
+	public function test_can_a_user_logout()
+	{
+		$user = User::factory()->create();
+		$this->be($user);
+
+		$this->post(route('user.logout'))
+		->assertRedirect(route('user.login.form'));
+
+		$this->assertGuest();
 	}
 }
