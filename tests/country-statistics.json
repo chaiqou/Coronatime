@@ -1,0 +1,11 @@
+{
+    "id": 29,
+    "country": "Georgia",
+    "code": "GE",
+    "confirmed": 2726,
+    "recovered": 1911,
+    "critical": 4922,
+    "deaths": 3209,
+    "created_at": "2022-02-13T18:17:01.000000Z",
+    "updated_at": "2022-06-03T00:00:03.000000Z"
+}
