@@ -42,7 +42,7 @@ class ForgotPasswordTest extends TestCase
 		Mail::assertSent(ForgotPasswordEmail::class);
 	}
 
-	public function testBasicTest()
+	public function test_forgot_password_mailable_content()
 	{
 		$this->withoutExceptionHandling();
 		$user = User::factory()->create(['email' => 'lomtadzenikusha@gmail.com']);
