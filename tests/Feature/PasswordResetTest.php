@@ -15,7 +15,8 @@ class PasswordResetTest extends TestCase
 	public function test_if_user_do_not_provided_password_auth_give_us_password_error()
 	{
 		$response = $this->post(route('reset.password'), [
-			'password'    => '',
+			'password'         => '',
+			'confirm_password' => '',
 		]);
 
 		$response->assertSessionHasErrors('password');

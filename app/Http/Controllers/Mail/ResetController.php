@@ -12,7 +12,7 @@ use App\Http\Requests\ResetPasswordRequest;
 
 class ResetController extends Controller
 {
-	public function index(Request $request, int $token = null): View
+	public function index(Request $request, $token = null): View
 	{
 		return view('password.reset-password')
 				   ->with(['token' => $token, 'email' => $request->email]);
