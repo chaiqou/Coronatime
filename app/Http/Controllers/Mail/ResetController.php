@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\ResetPasswordRequest;
 
 class ResetController extends Controller
 {

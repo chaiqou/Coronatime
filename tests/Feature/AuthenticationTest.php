@@ -52,31 +52,39 @@ class AuthenticationTest extends TestCase
 
 	public function test_authenticated_users_can_access_dashboard()
 	{
+		$this->withoutExceptionHandling();
 		$user = User::factory()->create();
 
 		$response = $this->actingAs($user)
+
 		->get(route('dashboard.worldwide'))
-		->assertSee('Worldwide Statistics')
-		->assertSuccessful();
+		->assertSee('Worldwide Statistics');
+
+		$this->assertAuthenticated();
 	}
 
-	// public function test_redirect_to_dashboard_after_successful_login()
-	// {
-	// 	$username = 'chaiqou';
-	// 	$password = '123';
+	public function test_redirect_to_dashboard_after_successful_login()
+	{
+		$this->withoutExceptionHandling();
+		$username = 'chaiqou';
+		$password = '123';
+		$is_verified = 1;
 
-	// 	$user = User::factory()->create([
-	// 		'username'    => $username,
-	// 		'password'    => bcrypt($password),
-	// 	]);
+		$user = User::factory()->create([
+			'username'    => $username,
+			'password'    => bcrypt(123),
+			'is_verified' => $is_verified,
+		]);
 
-	// 	$response = $this->post('/login', [
-	// 		'username'    => $username,
-	// 		'password'    => $password,
-	// 	]);
+		$response = $this->actingAs($user)->post(route('user.login'), [
+			'username'    => $username,
+			'password'    => 123,
+			'is_verified' => $is_verified,
+		]);
 
-	// 	$response->assertRedirect('/dashboard');
-	// }
+		$this->assertAuthenticated();
+		$response->assertRedirect(route('dashboard.worldwide'));
+	}
 
 	public function test_unauthenticated_user_can_not_access_dashboard()
 	{

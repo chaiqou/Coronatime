@@ -2,7 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Mail\SignupEmail;
 use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
 
 class ForgotPasswordTest extends TestCase
 {
@@ -21,4 +24,17 @@ class ForgotPasswordTest extends TestCase
 
 		$response->assertSessionHasErrors('email');
 	}
+
+	// public function test_reset_password_link_can_be_requested()
+	// {
+	// 	Notification::fake();
+
+	// 	$user = User::factory()->create();
+
+	// 	$response = $this->post('/forgot-password', [
+	// 		'email' => $user->email,
+	// 	]);
+
+	// 	Notification::assertSentTo($user, SignupEmail::class);
+	// }
 }
