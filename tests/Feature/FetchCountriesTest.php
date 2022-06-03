@@ -4,23 +4,19 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Country;
-use Illuminate\Support\Facades\Http;
 
 class FetchCountriesTest extends TestCase
 {
-	public function test_countries_are_fetched_from_api()
+	public function test_artisan_command_can_synchronize_database()
 	{
-		Http::fake();
+		$country = Country::where('code', '=', 'AF')->first();
 
-		$country = Country::latest()->first();
-
-		$this->assertDatabaseMissing('countries', [
-			'code' => 'GE',
-		]);
-		$this->assertDatabaseCount('countries', 0);
+		$this->assertDatabaseMissing('countries', ['code' => 'AF']);
 
 		$this->artisan('synchronize:database')
 			->assertSuccessful()
 			->assertExitCode(0);
+
+		$this->assertDatabaseCount('countries', 105);
 	}
 }
