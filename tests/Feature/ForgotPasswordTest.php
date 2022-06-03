@@ -41,4 +41,16 @@ class ForgotPasswordTest extends TestCase
 		Mail::to('lomtadzenikusha@gmail.com')->send(new ForgotPasswordEmail('token'));
 		Mail::assertSent(ForgotPasswordEmail::class);
 	}
+
+	public function testBasicTest()
+	{
+		$this->withoutExceptionHandling();
+		$user = User::factory()->create(['email' => 'lomtadzenikusha@gmail.com']);
+		$response = $this->post('/forgot-password', [
+			'email' => $user->email,
+		]);
+		$mailable = new ForgotPasswordEmail('token');
+
+		$mailable->assertSeeInHtml('click this button to recover a password');
+	}
 }

@@ -32,9 +32,6 @@ class ForgotPasswordEmail extends Mailable
 	{
 		$action_link = route('reset.password.form', ['token' => $this->token, 'email' => $request->email]);
 		return $this->view('mail/email-forgot', ['action_link' => $action_link, 'body' => 'Check your password reset link'], function ($message) use ($request) {
-			$message->from('coronatime@gmail.com', 'Coronatime');
-			$message->to($request->email, 'Coronatime')
-					->subject('Password reset');
 		});
 	}
 }
