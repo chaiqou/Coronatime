@@ -50,7 +50,7 @@ class DashboardTest extends TestCase
 		$response->assertDontSee('Terjola');
 	}
 
-	public function test_sort()
+	public function test_country_can_be_sorted()
 	{
 		$this->withoutExceptionHandling();
 		$username = 'chaiqou';
