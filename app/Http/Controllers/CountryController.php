@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class CountryController extends Controller
 {
@@ -21,26 +21,25 @@ class CountryController extends Controller
 
 	public function byCountry(Request $request): View
 	{
-		$countries = Country::latest();
+		$country = Country::query();
 
-		if ($request->search)
+		if (request('search'))
 		{
-			$countries->where('name', 'like', '%' . $request->search . '%')
-			->orWhere('name_geo', 'like', '%' . $request->search . '%');
+			$country->where('name', 'like', '%' . request('search') . '%')
+				->orWhere('name_geo', 'like', '%' . request('search') . '%');
 		}
 
 		$covidStatisticSum = [
-			'confirmed' => Country::sum('confirmed'),
-			'deaths'    => Country::sum('deaths'),
-			'recovered' => Country::sum('recovered'),
+			'confirmed' => $country->sum('confirmed'),
+			'deaths'    => $country->sum('deaths'),
+			'recovered' => $country->sum('recovered'),
 		];
 
-		$query = Country::query();
 		if ($sort = $request->input('sort'))
 		{
-			$query->orderBy($request->input('name'), $sort);
+			$country->orderBy($request->input('name'), $sort);
 		}
 
-		return view('dashboard.by-country', ['covidStatisticSum' => $covidStatisticSum, 'countries'  => $query->get()]);
+		return view('dashboard.by-country', ['covidStatisticSum' => $covidStatisticSum, 'countries'  => $country->get()]);
 	}
 }
