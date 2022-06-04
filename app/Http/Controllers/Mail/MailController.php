@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Request;
 
 class MailController extends Controller
 {
-	public static function sendSignupEmail(string $username, string $email, string $verification_code): Void
+	public static function sendSignupEmail(string $username, string $email, $verification_code): Void
 	{
 		$data = [
 			'email'             => $email,
@@ -26,15 +26,8 @@ class MailController extends Controller
 		$verification_code = Request::get('code');
 		$user = User::where(['verification_code' => $verification_code])->first();
 
-		if ($user != null)
-		{
-			$user->is_verified = 1;
-			$user->save();
-			return redirect()->route('mail.confirmed');
-		}
-		else
-		{
-			return redirect()->route('user.registration.form');
-		}
+		$user->is_verified = 1;
+		$user->save();
+		return redirect()->route('mail.confirmed');
 	}
 }

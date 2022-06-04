@@ -3,11 +3,12 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use App\Models\User;
 use App\Models\PasswordReset;
 
 class VerificationTest extends TestCase
 {
-	public function test_if_user_verified()
+	public function test_if_verification_token_exists()
 	{
 		$this->withoutExceptionHandling();
 
@@ -26,5 +27,13 @@ class VerificationTest extends TestCase
 		]);
 
 		$response->assertRedirect(route('updated.password'));
+	}
+
+	public function test_if_user_verified()
+	{
+		$this->withoutExceptionHandling();
+		$user = User::factory()->create();
+		$response = $this->get('/mail-verify');
+		$response->assertStatus(302);
 	}
 }
