@@ -26,21 +26,14 @@ class ResetController extends Controller
 			'token' => $request->token, ])
 		->first();
 
-		if (!$check_if_token_exists)
-		{
-			return back();
-		}
-		else
-		{
-			User::where('email', $request->email)->update([
-				'password' => bcrypt($request->password),
-			]);
+		User::where('email', $request->email)->update([
+			'password' => bcrypt($request->password),
+		]);
 
-			DB::table('password_resets')
+		DB::table('password_resets')
 			->where(['email' => $request->email])
 			->delete();
 
-			return redirect()->route('updated.password');
-		}
+		return redirect()->route('updated.password');
 	}
 }

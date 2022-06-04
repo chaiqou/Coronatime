@@ -3,23 +3,28 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use App\Models\User;
-use Illuminate\Support\Facades\Event;
+use App\Models\PasswordReset;
 
 class VerificationTest extends TestCase
 {
 	public function test_if_user_verified()
 	{
-		Event::fake();
+		$this->withoutExceptionHandling();
 
-		$user = User::factory()->create();
-		$response = $this
-			->get(route('reset.password'));
+		$password = PasswordReset::factory()->create(['email' => 'lomtadzenikusha@gmail.com', 'token' => 123]);
 
-		$this->assertDatabaseMissing('password_resets', [
-			'token' => $user->token,
+		$response = $this->post(route('reset.password'), [
+			'email'                 => $password->email,
+			'token'                 => $password->token,
+			'password'              => 123,
+			'password_confirmation' => 123,
 		]);
 
-		$response->assertStatus(405);
+		$this->assertDatabaseMissing('password_resets', [
+			'email' => $password->email,
+			'token' => $password->token,
+		]);
+
+		$response->assertRedirect(route('updated.password'));
 	}
 }
